@@ -1,0 +1,26 @@
+.header {
+	background-color: yellow;
+	width: 100%;
+	height:70px;
+	position: relative;
+}
+
+.top-bar {
+	height:30px;
+	width:100%;
+	background-color: green;
+}
+
+.left-bar {
+	float: left;
+	width: 16%;
+	height: 550px;
+	background-color: gray;
+}
+
+.content {
+	float: right;
+	width: 84%;
+	height: 550px;
+	background-color: blue;
+}

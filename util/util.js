@@ -4,9 +4,7 @@ var urlparse = function (path) {
 	var results = {};
 	var urlArr = path.split('/');
 
-	
-
-	switch (urlArr[1].toLowerCase) {
+	switch (urlArr[1].toLowerCase()) {
 		case 'artical':
 			results.sort = urlArr[1];
 			results.date = urlArr[2];
@@ -15,12 +13,14 @@ var urlparse = function (path) {
 		case 'admin':
 			results.sort = urlArr[1];
 			results.page = urlArr[2];
-			if (urlArr[3]) {
+			if (urlArr[3] && !urlArr[4]) {
 				results.action = urlArr[3];
+				break;
 			} else if (urlArr[3] && urlArr[4]) {
 				results.action = urlArr[3];
 				results.target = urlArr[4];
-			}	
+				break;
+			} 
 			break;
 		case 'index':
 			results.sort = urlArr[1];
