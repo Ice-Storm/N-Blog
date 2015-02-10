@@ -26,6 +26,7 @@
 	width: 100%;
 	height:25px;
 	background-color: #278296;
+	margin-bottom: 5px;
 }
 
 .left-artical-manger span{
@@ -36,6 +37,13 @@
 	display: block;
 }
 
+.left-artical-manger span i{
+	margin-left:30%;
+	background-color: #278296;
+	color: #fff;
+	cursor: pointer;
+}
+
 .left-artical-manger-content {
 	width: 96%;
 	height: 200px;
@@ -44,6 +52,8 @@
 	margin-bottom: 5px;
 	border: 1px solid black;
 	background-color: #fff;
+	display: none;
+
 }
 
 .content {
