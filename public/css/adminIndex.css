@@ -20,6 +20,20 @@
 	background-color: #80BDCB;
 }
 
+.left-artical-manger {
+	width: 100%;
+	height:25px;
+	background-color: #278296;
+}
+
+.left-artical-manger span{
+	padding-top: 3px;
+	margin-left:30%;
+	background-color: #278296;
+	color: #fff;
+	display: block;
+}
+
 .content {
 	float: right;
 	width: 84%;
