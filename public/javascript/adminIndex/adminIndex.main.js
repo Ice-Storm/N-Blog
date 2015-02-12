@@ -18,7 +18,19 @@ require(['jquery', 'floder'], function ($, f) {
 			case 'img':
 				f.floder('img');
 				break;
+			case 'message':
+				f.floder('message');
+				break;
 			default: 'What ???';
 		}
+	});
+
+	$($('.left-bar')[0]).click(function (event) {
+		alert($(event.target.nodeName).parent().html())
+		for (i in event.target) {
+			console.log(i)
+		}
+		
 	})
+
 })
