@@ -50,6 +50,12 @@ var fun = 'create table Nblog_img (' +
 'foreign_p tinyint not null default 0' + 
 ') engine innoDB charset utf8'
 
+var leftMenuList = 'create table Nblog_left_menu_list (' +
+'id int primary key not null auto_increment,' +
+'list_name char(10) unique not null default""' +
+') engine innoDB charset utf8'
+
+
 
 module.exports.artical = artical;
 

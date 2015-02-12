@@ -2,6 +2,7 @@ var URL = require('url');
 
 var urlparse = function (path) {
 	var results = {};
+
 	var urlArr = path.split('/');
 
 	switch (urlArr[1].toLowerCase()) {
@@ -18,7 +19,8 @@ var urlparse = function (path) {
 				break;
 			} else if (urlArr[3] && urlArr[4]) {
 				results.action = urlArr[3];
-				results.target = urlArr[4];
+				results.target = decodeURI(urlArr[4].split('?')[0]);
+				results.page = urlArr[5];
 				break;
 			} 
 			break;

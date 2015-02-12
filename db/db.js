@@ -167,6 +167,10 @@ var getData = function (valueCol, cb) {
 		throw 'SQL Error'
 	}
 
+
+	
+	console.log(sql)
+
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');
 		conn.query(sql, function (err, data) {

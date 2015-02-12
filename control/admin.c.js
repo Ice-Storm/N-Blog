@@ -1,9 +1,10 @@
+var async = require('async');
 var util = require('../util/util.js');
+var dealLeftMenuList = require('./admin.dealLeftMenu.js');
 
 
 var admin = function (req, res) {
-	var urlInfo = util.urlparse(req.path);
-	res.render(urlInfo.page)
+	console.log('!!!!!!')
 }
 
 

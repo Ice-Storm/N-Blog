@@ -24,13 +24,4 @@ require(['jquery', 'floder'], function ($, f) {
 			default: 'What ???';
 		}
 	});
-
-	$($('.left-bar')[0]).click(function (event) {
-		alert($(event.target.nodeName).parent().html())
-		for (i in event.target) {
-			console.log(i)
-		}
-		
-	})
-
 })
