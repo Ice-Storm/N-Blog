@@ -1,0 +1,35 @@
+<% include adminHeader.html %>
+		<div class = 'content-content'>
+			<ul class = 'content-title'>
+				<li>
+					<span>用户名</span>
+				</li>
+				<li>
+					<span>用户密码</span>
+				</li>
+				<li>
+					<span>用户分组</span>
+				</li>
+				
+				<li>
+					<span>登录IP</span>
+				</li>
+				<li>
+					<span>登录日期</span>
+				</li>
+				<li>
+					<span>操作</span>
+				</li>
+			</ul>
+			<ul class = 'content-title'>
+				<% for (i = 0;i < info.length; i++){ %>
+					<li><span><%= info[i].user %></span></li>
+					<li><span><%= info[i].password %></span></li>
+					<li><span><%= info[i].flag %></span></li>
+					<li><span><%= info[i].ip %></span></li>
+					<li><span><%= info[i].time %></span></li>
+				<% } %>
+			</ul>
+		</div>
+
+<% include adminFooter.html %>
