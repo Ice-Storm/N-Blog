@@ -1,0 +1,46 @@
+<% include adminHeader.html %>
+
+	<link rel="stylesheet" href="/kindeditor-4.1.10/themes/default/default.css" />
+	<link rel="stylesheet" href="/kindeditor-4.1.10/themes/simple/simple.css" />
+	<script charset="utf-8" src="/kindeditor-4.1.10/kindeditor-min.js"></script>
+	<script charset="utf-8" src="/kindeditor-4.1.10/lang/zh_CN.js"></script>
+
+	<div class = 'content-artical'>
+		<div class = 'content-artical-all'>
+			<form action = '/admin/adminIndex/content/addArtical' method = 'POST' id = 'articalForm'>
+				<div class = 'content-artrical-title'>
+					<span>标题:</span>
+					<input type = 'text' class = 'title-input' name = 'title'/>
+				</div>
+				<div class = 'textarea-position'>
+					<textarea class = 'teatarea-input' id = 'editor' name = 'content'></textarea>
+				</div>
+				<div class = 'group-button'>
+					<input type = 'submit' value = '提交' class = 'submit-btn'>
+					<input type = 'button' value = '预览' class = 'button-btn'>
+				</div>
+			</form>
+		</div>
+	</div>
+	<script>
+		var editor;
+        KindEditor.ready(function(K) {
+                editor = K.create('#editor', {
+                        items: [
+					        'source','code',
+					        'wordpaste','justifyleft', 'justifycenter', 'justifyright',
+					        'outdent','fontname', 'fontsize','forecolor', 'hilitecolor', 'bold',
+					        'italic', 'underline', 'strikethrough', 'lineheight', 'image', 'multiimage',
+					        'hr', 'emoticons',
+					        'anchor', 'link'
+						],
+
+						resizeType: 0,
+
+						fileManagerJson : '/admin/adminIndex/content/addArtical',
+						allowFileManager : true,
+                });
+        });
+	</script>
+
+<% include adminFooter.html %>

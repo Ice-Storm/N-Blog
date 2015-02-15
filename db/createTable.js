@@ -3,6 +3,7 @@ var artical = 'create table Nblog_artical (' +
 'title varchar(30) unique not null,' +
 'content text,' +
 'author char(15) not null default "",' + 
+'sort tinyint not null default 0,' +
 'time timestamp not null default NOW(), ' +
 'img_p bigint default 0, ' +
 'flag tinyint not null default 0' +

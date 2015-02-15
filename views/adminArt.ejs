@@ -1,0 +1,38 @@
+<% include adminHeader.html %>
+		<div class = 'content-content'>
+			<ul class = 'content-title'>
+				<li>
+					<span>ID</span>
+				</li>
+				<li>
+					<span>文章标题</span>
+				</li>
+				<li>
+					<span>文章分类</span>
+				</li>
+				<li>
+					<span>置顶</span>
+				</li>
+				<li>
+					<span>日期</span>
+				</li>
+				<li>
+					<span>操作</span>
+				</li>
+				<li>
+					<span>作者</span>
+				</li>
+			</ul>
+				<ul class = 'content-title-m'>
+				<% for (i = 0;i < info.length; i++){ %>
+					<li><span><%= info[i].id %></span></li>
+					<li><span><%= info[i].title %></span></li>
+					<li><span><%= info[i].sort %></span></li>
+					<li><span><%= info[i].flag %></span></li>
+					<li><span><%= info[i].time %></span></li>
+					<li></li>
+					<li><span><%= info[i].author %></span></li>
+				<% } %>
+			</ul>
+		</div>
+<% include adminFooter.html %>

@@ -1,0 +1,154 @@
+.header {
+	background-color: #278296;
+	width: 100%;
+	height:70px;
+	position: relative;
+	border-bottom: 1px solid #fff;
+}
+
+.top-bar {
+	height:30px;
+	width:100%;
+	background-color: #80BDCB;
+	border-bottom: 1px solid #fff;
+}
+
+.left-bar {
+	float: left;
+	width: 15%;
+	height: 550px;
+	overflow: scroll;
+	overflow-x: hidden; 
+	background-color: #80BDCB;
+}
+
+.left-artical-manger {
+	width: 100%;
+	height:25px;
+	background-color: #278296;
+	margin-bottom: 5px;
+}
+
+.left-artical-manger span{
+	padding-top: 3px;
+	margin-left:30%;
+	background-color: #278296;
+	color: #fff;
+	display: block;
+}
+
+.left-artical-manger span i{
+	margin-left:30%;
+	background-color: #278296;
+	color: #fff;
+	cursor: pointer;
+}
+
+.left-artical-manger-content {
+	width: 96%;
+	margin-top: 5px;
+	margin-left: 2%;
+	margin-bottom: 5px;
+	border: 1px solid black;
+	background-color: #fff;
+	display: none;
+}
+
+.left-artical-manger-content-list li {
+	padding-top: 5px;
+	padding-left: 20px;
+	padding-bottom: 5px;
+	cursor: pointer;
+}
+
+.left-artical-manger-content-list :hover {
+	background-color: #AAAAAB;
+}
+
+.content {
+	float: right;
+	width: 84%;
+	height: 550px;
+	background-color: #DDEEF2;
+}
+
+.content-sort {
+	width: 98%;
+	height: 35px;
+	background-color: #F4FAFB;
+	margin-left: 1%;
+	margin-top: 10px;
+	border: 1px solid #80BDCB;
+}
+
+.content-publish {
+	height: 25px;
+	width: 8%;
+	margin-top: 5px;
+	margin-left: 88%;
+	position: relative;
+	background-color: #278296;
+	border-radius: 3px;
+}
+
+.content-publish span{
+	display:block;
+	padding-top: 3px;
+	padding-left: 15px;
+	color: #fff;
+}
+
+.content-artical {
+	width: 90%;
+	height: 500px;
+	margin-left: 5%;
+}
+
+.content-artical-all {
+	margin-top: 15px;
+}
+
+.content-artrical-title {
+	margin-left: 15%;
+	font-size: 20px;
+}
+
+.title-input {
+	width: 50%;
+	height: 25px;
+	padding-left: 15px;
+	color: gray;
+}
+
+.textarea-position {
+	margin-top: 15px;
+	margin-left: 10%;
+}
+
+.teatarea-input {
+	padding: 15px;
+	width: 56%;
+	height: 360px;
+}
+
+.group-button {
+	margin-left: 35%;
+	margin-top: 20px;
+}
+
+.submit-btn {
+	width: 65px;
+	height: 23px;
+	margin-right: 3%;
+	background-color: #fff;
+	border-radius: 3px;
+	border: 1px solid gray;
+}
+
+.button-btn {
+	width: 65px;
+	height: 23px;
+	background-color: #fff;
+	border-radius: 3px;
+	border: 1px solid gray;
+}
