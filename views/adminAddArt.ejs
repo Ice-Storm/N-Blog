@@ -7,7 +7,7 @@
 
 	<div class = 'content-artical'>
 		<div class = 'content-artical-all'>
-			<form action = '/admin/adminIndex/content/addArtical' method = 'POST' id = 'articalForm'>
+			<form action = '/admin/adminIndex/content/addArtical' method = 'POST' id = 'articalForm' enctype='multipart/form-data'>
 				<div class = 'content-artrical-title'>
 					<span>标题:</span>
 					<input type = 'text' class = 'title-input' name = 'title'/>
@@ -37,8 +37,10 @@
 
 						resizeType: 0,
 
-						fileManagerJson : '/admin/adminIndex/content/addArtical',
-						allowFileManager : true,
+						uploadJson : '/admin/adminIndex/content/addArtical'
+
+						//fileManagerJson : '/admin/adminIndex/content/addArtical',
+						//allowFileManager : true
                 });
         });
 	</script>
