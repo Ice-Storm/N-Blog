@@ -98,57 +98,58 @@
 	color: #fff;
 }
 
-.content-artical {
-	width: 90%;
-	height: 500px;
-	margin-left: 5%;
-}
-
-.content-artical-all {
-	margin-top: 15px;
-}
-
-.content-artrical-title {
-	margin-left: 15%;
-	font-size: 20px;
-}
-
-.title-input {
-	width: 50%;
+.input-group input {
+	width: 250px;
 	height: 25px;
 	padding-left: 10px;
-	color: gray;
+	font: gray;
+	margin-left: 10px;
 }
 
-.textarea-position {
-	margin-top: 15px;
-	margin-left: 10%;
+.input-group {
+	margin: 20px;
+	font-size: 16px; 
 }
 
-.teatarea-input {
-	padding: 15px;
-	width: 56%;
-	height: 360px;
+.add-message {
+	float: left;
+	border-right: 1px solid gray;
 }
 
-.group-button {
-	margin-left: 35%;
-	margin-top: 20px;
-}
-
-.submit-btn {
-	width: 65px;
-	height: 23px;
-	margin-right: 3%;
+.submit {
+	width: 60px;
+	height: 25px;
 	background-color: #fff;
-	border-radius: 3px;
+	margin-left: 40%;
 	border: 1px solid gray;
+	cursor: pointer;
 }
 
-.button-btn {
-	width: 65px;
-	height: 23px;
+.input-add {
+	width: 60px;
+	height: 25px;
 	background-color: #fff;
+	border: 1px solid gray;
+	cursor: pointer;
+	margin-left: 3%;
+}
+
+.tag {
+	float: right;
+	margin-right: 33%;
+	font-size: 18px;
+	margin-top: 25px;
+	width: 50%;
+	border-right: 1px solid black;
+	width: 30%;
+}
+
+.tag-tag {
+	float: left;
+	height: 25px;
+	background-color: #fff;
+	margin-left: 10px;
+	margin-top: 10px;
 	border-radius: 3px;
 	border: 1px solid gray;
 }

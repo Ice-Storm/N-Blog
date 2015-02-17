@@ -21,6 +21,9 @@ require(['jquery', 'floder'], function ($, f) {
 			case 'message':
 				f.floder('message');
 				break;
+			case 'else':
+				f.floder('else');
+				break;
 			default: 'What ???';
 		}
 	});

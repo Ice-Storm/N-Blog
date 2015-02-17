@@ -5,7 +5,7 @@ var artical = 'create table Nblog_artical (' +
 'author char(15) not null default "",' + 
 'sort tinyint not null default 0,' +
 'time timestamp not null default NOW(), ' +
-'img_p bigint default 0, ' +
+'img_p bigint not null default 0, ' +
 'flag tinyint not null default 0' +
 ') engine innoDB charset utf8' 
 
@@ -21,6 +21,18 @@ var admin = 'create table Nblog_admin (' +
 'answer_two char(6) not null default"",' +
 'answer_three char(6) not null default""' +
 ') engine innoDB charset utf8' 
+
+var img = 'create table Nblog_img (' +
+'id int primary key not null auto_increment,' +
+'img_name char(17) not null default "",' +
+'foreign_p bigint not null default 0' + 
+') engine innoDB charset utf8'
+
+var tag = 'create table Nblog_left_menu_list (' +
+'id int primary key not null auto_increment,' +
+'tag_name char(10) unique not null default""' +
+') engine innoDB charset utf8'
+
 
 var config = 'create table Nblog_config (' +
 'blog_name char(10) not null default"",' +
@@ -38,12 +50,6 @@ var menu = 'create table Nblog_menu (' +
 'foreign_p tinyint not null default 0' + 
 ') engine innoDB charset utf8'
 
-var img = 'create table Nblog_img (' +
-'id int primary key not null auto_increment,' +
-'img_name bigint not null default 0,' +
-'foreign_p tinyint not null default 0' + 
-') engine innoDB charset utf8'
-
 var fun = 'create table Nblog_img (' +
 'id int primary key not null auto_increment,' +
 'fun_name char(10) not null default"",' +
@@ -51,10 +57,12 @@ var fun = 'create table Nblog_img (' +
 'foreign_p tinyint not null default 0' + 
 ') engine innoDB charset utf8'
 
-var leftMenuList = 'create table Nblog_left_menu_list (' +
+var rightMenuList = 'create table Nblog_left_menu_list (' +
 'id int primary key not null auto_increment,' +
 'list_name char(10) unique not null default""' +
 ') engine innoDB charset utf8'
+
+
 
 
 
@@ -71,4 +79,4 @@ module.exports.img = img;
 
 module.exports.fun = fun;
 
-//insert into Nblog_artical values (1, 'test', '的撒旦', 'admin', null, '123', null);
+module.exports.tag = tag;

@@ -34,6 +34,10 @@ define(['jquery'], function ($) {
 		var h = articalCloHei + totalHeight.length * 116 + 40 + totalHeight.length * 2 + 100;
 		$(content).height(h); 
 
+		//
+
+		$($('.right-col')[0]).height($(content).height() - 45)
+		//alert()
 	}
 
 

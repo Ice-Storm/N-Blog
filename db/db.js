@@ -167,10 +167,6 @@ var getData = function (valueCol, cb) {
 		throw 'SQL Error'
 	}
 
-
-	
-	console.log(sql)
-
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');
 		conn.query(sql, function (err, data) {
@@ -277,7 +273,7 @@ var getResultCount = function (valueCol, cb) {
 		conn.query(sql, function (err, data) {
 			if (err) throw err;
 			if (valueCol.close) conn.release();
-			if (typeof cb == 'function') cb(null, data[0]);
+			if (typeof cb == 'function') cb(null, data);
 		})
 	});
 }
@@ -288,7 +284,7 @@ var selectAuto = function (sql, cb) {
 		conn.query(sql, function (err, data) {
 			if (err) throw err;
 			conn.release();
-			if (typeof cb == 'function') cb(null, data[0]);
+			if (typeof cb == 'function') cb(null, data);
 		})
 	});
 }

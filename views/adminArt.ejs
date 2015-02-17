@@ -23,16 +23,18 @@
 					<span>作者</span>
 				</li>
 			</ul>
-				<ul class = 'content-title-m'>
+			
 				<% for (i = 0;i < info.length; i++){ %>
-					<li><span><%= info[i].id %></span></li>
-					<li><span><%= info[i].title %></span></li>
-					<li><span><%= info[i].sort %></span></li>
-					<li><span><%= info[i].flag %></span></li>
-					<li><span><%= info[i].time %></span></li>
-					<li></li>
-					<li><span><%= info[i].author %></span></li>
+					<ul class = 'content-title-m'>
+						<li><span><%= info[i].id %></span></li>
+						<li><span><%= info[i].title %></span></li>
+						<li><span><%= info[i].sort %></span></li>
+						<li><span><%= info[i].flag %></span></li>
+						<li><span><%= info[i].time %></span></li>
+						<li></li>
+						<li><span><%= info[i].author %></span></li>
+					</ul>
 				<% } %>
-			</ul>
+			
 		</div>
 <% include adminFooter.html %>

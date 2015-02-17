@@ -1,11 +1,17 @@
 body {
-	background-color: #ebf1f3;
+	background-color: #EBEBED;
+}
+
+.body {
+	width: 84%;
+	margin-left: 8%;
+	background-color: #fff;
 }
 
 .header {
 	width: 100%;
 	height: 150px;
-	background-color: #ebf1f3;
+	background-color: #fff;
 }
 
 .header-title {
@@ -16,26 +22,28 @@ body {
 .logo-area {
 	float: left;
 	margin-left: 10%;
-	width: 35%;
+	width: 40%;
 	height: 150px;
 }
 
 .logo-font {
 	position: relative;
-	font-size: 40px;
-	font-weight: bold;
+	font-size: 32px;
 	top: 30px;
+	font-weight: bold;
 }
 
 .logo-small-font {
-	position: relative;
-	font-size:18px;
+	margin-left: 30px;
+	margin-top: 10px;
+	font-size: 18px;
+	font-weight: normal;
 }
 
 .menu-top {
 	float: right;
 	margin-right: 10%;
-	background-color: #ebf1f3;
+	background-color: #fff;
 	height: 120px;
 	width: 30%;
 	margin-top: 30px;
@@ -44,35 +52,34 @@ body {
 .menu-list li {
 	float: left;
 	width: 32%;
-	font-size: 20px;
+	font-size: 17px;
 	margin-top: 50px;
 }
 
 .menu-draw {
 	width: 0px;
 	height: 0px;
-	border-left: 7px solid transparent;
-	border-right: 7px solid transparent;
+	border-left: 5px solid transparent;
+	border-right: 4px solid transparent;
 	border-top: 10px solid black;
-	margin-top: 30px;
+	margin-top: 20px;
 	float: right;
-	margin-right: 30%;
-	margin-top: 8%;
+	margin-right: 36%;
+	margin-top: 6%;
 }
 
 .content {
 	float: left;
 	width: 65%;
-
-	background-color: #ebf1f3;
-	margin-top: -40px;
-	margin-bottom: 50px;
+	background-color: #fff;
+	margin-top: -45px;
+	
 }
 
 .content-artical-bg {
 	width: 85%;
 	height: 800px;
-	background-color: #ebf1f3;
+	background-color: #fff;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
 	margin-left: 15%;
@@ -81,19 +88,20 @@ body {
 .content-artical-artical {
 	width: 99%;
 	background-color: #fff;
-	border-radius: 10px;
+	border-radius: 5px;
 	margin-top: 50px;
-	border: 1px solid #c3c4c5;
+	border: 1px solid gray;
 }
 
 .content-img {
-	border-top-right-radius: 10px;
-	border-top-left-radius: 10px;
+	border-top-right-radius: 5px;
+	border-top-left-radius: 5px;
 	width: 100%;
 }
 
 .content-artical-title {
 	position: relative;
+	font-weight: bold;
 	font-size: 25px;
 	margin-left: 12%;
 	top: 20px;
@@ -125,7 +133,7 @@ body {
 }
 
 .content-artical-page {
-	width: 36%;
+	width: 44%;
 	background-color: #fff;
 	height:50px;
 	font-size: 20px;
@@ -133,7 +141,7 @@ body {
 	border-radius: 5px;
 	margin-left: 25%;
 	margin-top:50px;
-	box-shadow: 3px 3px 3px;
+	border: 1px solid black;
 }
 
 .content-artical-page-previous {
@@ -185,31 +193,29 @@ body {
 
 .right-col {
 	width: 35%;
-	height: 1200px;
-	background-color: #ebf1f3;
+	background-color: #fff;
 	float: right;
 }
 
 .right-col-img-border {
 	width: 75%;
 	height: 75%;
-	border: 2px solid #c5c9c8;
+	border: 2px solid #EEEEEE;
 	margin-left: 12%;
 	position: relative;
-	border-radius: 10px;
 }
 
 .right-col-img-size {
-	width: 88%;
-	height: 88%;
-	margin-left: 6%;
-	margin-top: 10px;
+	width: 96%;
+	height: 96%;
+	margin-left: 2%;
+	margin-top: 5px;
 }
 
 .right-col-img {
 	width: 71%;
 	height: 300px;
-	background-color: #ebf1f3;
+	background-color: #fff;
 	padding-top: 5px;
 	margin-bottom: 100px;
 }
@@ -217,7 +223,7 @@ body {
 .right-col-img-tag {
 	width: 77%;
     height: 100px;
-    background-color: #ebf1f3;
+    background-color: #fff;
     margin-left: 12%;
 }
 
@@ -228,7 +234,7 @@ body {
 	margin-left: 10px;
 	margin-top: 10px;
 	border-radius: 3px;
-	border: 1px solid black;
+	border: 1px solid gray;
 }
 
 .right-col-img-tag-font {
@@ -237,8 +243,8 @@ body {
 	font-size: 18px;
 }
 
-.right-cpl-img-tag-font {
-	font-size:28px;
+.right-col-img-tag-font-title {
+	font-size:20px;
 	margin-top: 15px;
 	margin-left:0px;
 	font-weight: bold;
@@ -247,28 +253,21 @@ body {
 .right-col-content {
 	width: 71%;
 	height: 580px;
-	background-color: #ebf1f3;
+	background-color: #fff;
 }
 
 .right-col-content li {
 	margin-top: 8px;
-	font-size: 18px;
+	font-size: 16px;
 	height: 30px;
 	margin-left: 12%;
-	border-bottom: 1px solid #c5c9c8;
 }
 
 .right-col-title {
 	width: 100%;
 	margin-left: 12%;
-	font-size:28px;
+	font-size:20px;
 	font-weight: bold;
-	border-bottom: 1px solid #c5c9c8;
-}
-
-.right-col-title-a {
-	color: blue;
-	font-size:27px;
 }
 
 .right-col-content-util li {
@@ -280,7 +279,7 @@ body {
 	float: left;
 	width: 100%;
 	height: 150px;
-	background-color: #ebf1f3;
+	background-color: #fff;
 }
 
 .footer-line {
