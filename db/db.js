@@ -191,7 +191,6 @@ var del = function (valueCol, cb) {
 	}
 
 	var condition = '';
-	var fieldStr = '';
 
 	for (i in valueCol.condition) {
 		condition += i + ' = ' + e(valueCol.condition[i], false) + ' and ';
@@ -199,10 +198,11 @@ var del = function (valueCol, cb) {
 
 	condition = condition.slice(0, condition.length - 5);
 
-	sql = 'DELETE ' + fieldStr + ' FROM ' + valueCol.table + ' WHERE ' + condition;
+	sql = 'DELETE FROM ' + valueCol.table + ' WHERE ' + condition;
 
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');
+		console.log(sql)
 		conn.query(sql, function (err) {
 			if (err) throw err;
 			if (valueCol.close) conn.release();
@@ -214,7 +214,7 @@ var del = function (valueCol, cb) {
 
 var update = function (valueCol, cb) {
 	if (typeof valueCol != "object") {
-		throw 'Del parameter type err';
+		throw 'Update parameter type err';
 	}
 
 	if (!valueCol.table){

@@ -21,7 +21,8 @@ module.exports = function (router) {
 
 	router.get('/admin/adminindex', function (req, res) {
 		res.render("adminindex.ejs", {
-			css: 'adminIndex'
+			adminBase: 'adminBase',
+			css: 'adminAdmin'
 		})
 	});
 
@@ -36,6 +37,8 @@ module.exports = function (router) {
 	router.post('/admin/adminIndex/content/addArtical', adminAddArt.dealPost);
 	
 	router.get('/admin/adminIndex/dealRightMenuList/else', adminEls.dealGet);
+
+	router.post('/admin/adminIndex/dealRightMenuList/else', adminEls.dealPost);
 
 	router.get('/index/page/N');
 

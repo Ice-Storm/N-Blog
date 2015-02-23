@@ -12,10 +12,13 @@ var db = require('../db/db.js');
 
 var async = require('async');
 
+var config = require('../config.default.js');
+
 var dealGet = function (req, res) {
 	req.session.articalID = new Date().getTime();
 
 	res.render('adminAddArt', {
+		adminBase: 'adminBase',
 		css: 'adminIndex.adminAddArt'
 	})
 }
@@ -23,7 +26,6 @@ var dealGet = function (req, res) {
 var dealPost = function (req, res) {
 
 	var param = URL.parse(req.url, true).query.dir;
-
 
 	if (param == 'image') {
 		var form = new formidable.IncomingForm();
@@ -34,7 +36,8 @@ var dealPost = function (req, res) {
 
 		form.maxFieldsSize = 2 * 1024 * 1024;   
 
-		var uploadPath = path.join(__dirname, '../public/uploadImg/');
+
+		var uploadPath = path.join(__dirname, '..' + '/public' + config.uploadFile);
 
 		form.uploadDir = uploadPath;
 
@@ -71,18 +74,26 @@ var dealPost = function (req, res) {
 				function (n, cb) {
 					var sql = 'select img_name from Nblog_img where foreign_p not in ( select foreign_p from Nblog_img where exists (select * from Nblog_artical where Nblog_img.foreign_p = Nblog_artical.img_p))';
 					db.selectAuto(sql, function (err, data) {
-
 						async.each(data, function (i, callback) {
-							fs.unlink(uploadPath + i.img_name, callback(err, i))
+
+							var delObj = {
+								table: 'Nblog_img',
+								condition: {
+									img_name: i.img_name
+								},
+								close: 'true'
+							}
+
+							db.del(delObj, function () {console.log('删除成功')});
+							fs.unlink(uploadPath + i.img_name, callback(err, i));
 						}, function (err) {
 							cb(err, 'OK')
 						});
-						
 					});
 				}
 			], function (err, result) {
 				if (err) throw err;
-				res.json({error: 0, message: 'ok', url: '/uploadImg/' + imgName + '.' + extname});
+				res.json({error: 0, message: 'ok', url: config.uploadFile + imgName + '.' + extname});
 			})
 		})
 	} else {	
@@ -92,6 +103,7 @@ var dealPost = function (req, res) {
 			title: req.body.title,
 			content: req.body.content,
 			img_p: req.session.articalID,
+			flag: req.body.flag,
 			close: 'true'
 		}
 

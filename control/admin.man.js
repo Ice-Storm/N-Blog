@@ -30,6 +30,7 @@ var dealGet = function (req, res) {
 
 		res.render('adminMan', {
 			info: r,
+			adminBase: 'adminBase',
 			css: 'adminIndex.adminMan'
 		});
 	})

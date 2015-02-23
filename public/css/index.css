@@ -252,13 +252,13 @@ body {
 
 .right-col-content {
 	width: 71%;
-	height: 580px;
+	height: 510px;
 	background-color: #fff;
 }
 
 .right-col-content li {
 	margin-top: 8px;
-	font-size: 16px;
+	font-size: 15px;
 	height: 30px;
 	margin-left: 12%;
 }
@@ -268,6 +268,8 @@ body {
 	margin-left: 12%;
 	font-size:20px;
 	font-weight: bold;
+	display: block;
+	margin-bottom: 16px;
 }
 
 .right-col-content-util li {

@@ -15,7 +15,9 @@ var config = {
 		connectionLimit: 10,
 		queryLimit: 10,
 		multipleStatements: false
-	}
+	},
+
+	uploadFile: '/uploadImg/'
 }
 
 

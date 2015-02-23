@@ -1,53 +1,38 @@
 <% include adminHeader.html %>
 		<div class = 'add-message'>
-			<form>
+			<form action = '/admin/adminIndex/dealRightMenuList/else' method = 'POST'>
 				<div class = 'input-group'>
-					博客名称: <input type = 'text'>
-				</div>
-				<div class = 'input-group'>
-					博客签名: <input type = 'text'>
-				</div>
-				<div>
 					<ul>
-						<li><div class = 'input-group'>菜单名称: <input type = 'text'></div></li>
-						<li><div class = 'input-group'>菜单名称: <input type = 'text'></div></li>
-						<li><div class = 'input-group'>菜单名称: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>博客名称: <input type = 'text' name = 'blogName'></div></li>
+						<li><div class = 'input-group'>博客签名: <input type = 'text' name = 'blogSign'></div></li>
+						<li><div class = 'input-group'>菜单名称: <input type = 'text' name = 'blogMenu1'></div></li>
+						<li><div class = 'input-group'>菜单名称: <input type = 'text' name = 'blogMenu2'></div></li>
+						<li><div class = 'input-group'>菜单名称: <input type = 'text' name = 'blogMenu3'></div></li>
+						<li><div class = 'input-group'>版权所有: <input type = 'text' name = 'blogRight'></div></li>
+						<li><div class = 'input-group'>登录地址: <input type = 'text' name = 'blogAdmin'></div></li>
+						<li><div class = 'input-group'>Github &nbsp;: <input type = 'text' name = 'blogGit'></div></li>
 					</ul>
-				</div>
-				<div class = 'input-group'>
-					版权所有: <input type = 'text'>
 				</div>
 				<input type = 'submit' value = '提交' class = 'submit'>
 			</form>
 		</div>
 
-		<div class = 'tag'>
-			<div>
-				<span>
-					标签
-					<input type = 'button' value = '添加' class = 'input-add'>
-				</span>
-				<ul>
-					<li><div class = 'input-group'><input type = 'text'></div></li>
-					<li><div class = 'input-group'><input type = 'text'></div></li>
-					<li><div class = 'input-group'><input type = 'text'></div></li>
-				</ul>
-			</div>
+		<div class = 'add-message-right'>
+			<form action = '/admin/adminIndex/dealRightMenuList/else' method = 'POST'>
+				<div class = 'input-group'>
+					<ul>
+						<li><div class = 'input-group'>标签 1: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>标签 2: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>标签 3: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>标签 4: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>标签 5: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>标签 6: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>子菜单: <input type = 'text'></div></li>
+						<li><div class = 'input-group'>子菜单: <input type = 'text'></div></li>
+					</ul>
+				</div>
+				<input type = 'submit' value = '提交' class = 'submit'>
+			</form>
 		</div>
-
-			<div class = 'tag'>
-			<div>
-				<span>
-					标签
-					<input type = 'button' value = '添加' class = 'input-add'>
-				</span>
-				<ul>
-					<li><div class = 'input-group'><input type = 'text'></div></li>
-					<li><div class = 'input-group'><input type = 'text'></div></li>
-					<li><div class = 'input-group'><input type = 'text'></div></li>
-				</ul>
-			</div>
-		</div>s
-
 
 <% include adminFooter.html %>

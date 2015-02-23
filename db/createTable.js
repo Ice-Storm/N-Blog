@@ -6,7 +6,16 @@ var artical = 'create table Nblog_artical (' +
 'sort tinyint not null default 0,' +
 'time timestamp not null default NOW(), ' +
 'img_p bigint not null default 0, ' +
+'com_p bigint not null default 0, ' +
 'flag tinyint not null default 0' +
+') engine innoDB charset utf8' 
+
+var comment = 'create table Nblog_artical (' +
+'id int primary key not null auto_increment, ' +
+'content varchar(500) not null default "", ' +
+'time timestamp not null default NOW(), ' +
+'author char(15) not null default "",' + 
+'email char(22) not null default ""' + 
 ') engine innoDB charset utf8' 
 
 var admin = 'create table Nblog_admin (' +
@@ -31,23 +40,25 @@ var img = 'create table Nblog_img (' +
 var tag = 'create table Nblog_left_menu_list (' +
 'id int primary key not null auto_increment,' +
 'tag_name char(10) unique not null default""' +
+'foreign_p int not null default 0' + 
 ') engine innoDB charset utf8'
 
-
 var config = 'create table Nblog_config (' +
+'id int primary key not null auto_increment,' +
 'blog_name char(10) not null default"",' +
 'blog_sign char(30) not null default"",' +
 'blog_rights char(50) not null default "",' +
-'blog_menu_p int not null default"",' +
-'blog_right_sort_p int not null default"",' +
-'blog_function_p int not null default"",' +
-'blog_right_img int not null default""' +
+'blog_right_img int not null default"",' +
+'blog_address varchar(100) not null default "",'+
+'blog_github varchar(100) not null default "",'+
+'blog_menu_p int not null default 0,' +
+'blog_function_p int not null default 0' +	
 ') engine innoDB charset utf8'
 
 var menu = 'create table Nblog_menu (' +
 'id int primary key not null auto_increment,' +
 'menu_name char(10) not null default"",' +
-'foreign_p tinyint not null default 0' + 
+'foreign_p int not null default 0' + 
 ') engine innoDB charset utf8'
 
 var fun = 'create table Nblog_img (' +

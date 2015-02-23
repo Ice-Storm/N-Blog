@@ -24,6 +24,7 @@ var dealGet = function (req, res) {
 		console.log(r)
 		res.render('adminSta', {
 			info: r,
+			adminBase: 'adminBase',
 			css: 'adminIndex.adminSta'
 		});
 	})
