@@ -15,8 +15,6 @@ var dealGet = function (req, res) {
 var dealPost = function (req, res) {
 
 	if (req.body.blogName) {
-	
-
 		var arr = [];
 
 		for (i = 1; i <= 3; i++) {
@@ -50,6 +48,8 @@ var dealPost = function (req, res) {
 				}
 
 				async.each(arr, function (i, callback){
+					//如果数据库中没有数据更新就有问题，需要判断一下，但是没写
+
 					db.update(i, callback(null, 1));
 				}, function (err) {
 					if (err) throw err;
@@ -58,7 +58,57 @@ var dealPost = function (req, res) {
 			}, function (n, cb) {
 				db.update(n, cb(null, 1));
 			}
-		], function (err, cb) {
+		], function (err, r) {
+			if (err) throw err;
+			res.redirect('/admin/adminIndex/dealRightMenuList/else');
+		})
+	} else {
+		var arr = [];
+		var tagArr = [];
+
+		for (i = 1; i <= 2; i++) {
+			var menu = {};
+			menu.menu_name = req.body['menu_min' + i];
+			menu.table = 'Nblog_menu';
+			menu.close = 'true';
+			menu.foreign_p = 2;
+			menu.condition = {
+				id: i + 3
+			}
+			arr.push(menu);
+		}
+
+
+		for (i = 1; i <= 6; i++) {
+			var tag = {};
+			tag.tag_name = req.body['tag' + i];
+			tag.table = 'Nblog_tag';
+			tag.close = 'true';
+			tag.foreign_p = 1;
+			tag.condition = {
+				id: i
+			}
+			tagArr.push(tag);
+		}
+
+		async.waterfall([
+			function (cb) {
+				async.each(arr, function (i, callback) {
+					db.update(i, callback(null, 1));
+				}, function (err) {
+					if (err) throw err;
+					cb(null, 1);
+				})
+			},
+			function (n, cb) {
+				async.each(tagArr, function (i, callback) {
+					db.update(i, callback(null, 1));
+				}, function (err) {
+					if (err) throw err;
+					cb(null, 1);
+				})
+			}
+		], function (err, r) {
 			if (err) throw err;
 			res.redirect('/admin/adminIndex/dealRightMenuList/else');
 		})

@@ -37,7 +37,7 @@ var img = 'create table Nblog_img (' +
 'foreign_p bigint not null default 0' + 
 ') engine innoDB charset utf8'
 
-var tag = 'create table Nblog_left_menu_list (' +
+var tag = 'create table Nblog_tag (' +
 'id int primary key not null auto_increment,' +
 'tag_name char(10) unique not null default""' +
 'foreign_p int not null default 0' + 
@@ -51,7 +51,9 @@ var config = 'create table Nblog_config (' +
 'blog_right_img int not null default"",' +
 'blog_address varchar(100) not null default "",'+
 'blog_github varchar(100) not null default "",'+
-'blog_menu_p int not null default 0,' +
+'blog_menu_p int not null default 0,' + //首页上面三个主菜单选项
+'blog_menu_min_p int not null default 0,' + // 首页下面的两个子菜单
+'blog_tag_p int not null default 0,' +
 'blog_function_p int not null default 0' +	
 ') engine innoDB charset utf8'
 
