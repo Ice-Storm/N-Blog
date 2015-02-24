@@ -100,7 +100,7 @@ var getData = function (valueCol, cb) {
 				order: 'desc',
 				orderField: id
 			},
-			close: 'true'
+			close: true
 		}
 	*/
 
@@ -116,46 +116,37 @@ var getData = function (valueCol, cb) {
 		throw 'Condition is not exists';
 	}
 
+	if (!valueCol.field && valueCol.field.constructor != '[Function: Array]') {
+		throw 'Field is not exists or type error';
+	}
+
+	var judge = judgeObjLen(valueCol.condition);
+
+	if (!judge) {
+		throw 'No condition';
+	}
+
 	var fieldStr = '';
 	var sql = '';
 	var condition = '';
 	var fieldArr = valueCol.field;
 	var vc = valueCol.condition;
 
-	if (!valueCol.condition.all) {
-		if (!valueCol.field && valueCol.field.constructor != '[Function: Array]') {
-			throw 'Field is not exists or type error';
-		}
-
-		var judge = judgeObjLen(valueCol.condition);
-
-		if (!judge) {
-			throw 'No condition';
-		}
-
-		for (var i = 0; i < fieldArr.length; i++) {
-			fieldStr += e(fieldArr[i], true) + ',';	
-		}
-
-		fieldStr = fieldStr.slice(0, fieldStr.length - 1);
-
-		for (i in vc) {
-			if (i != 'limit' && i != 'order' && i != 'skip' && i != 'orderField') {
-				condition += i + ' = ' + e(valueCol.condition[i], false) + ' and ';
-			}
-		}
-
-		condition = condition.slice(0, condition.length - 5);
-
-		sql = 'SELECT ' + fieldStr + ' FROM ' + valueCol.table + ' WHERE ' + condition;
-
-	} else {
-
-		sql = 'SELECT * FROM ' + valueCol.table;
-		
+	for (var i = 0; i < fieldArr.length; i++) {
+		fieldStr += e(fieldArr[i], true) + ',';	
 	}
 
-	
+	fieldStr = fieldStr.slice(0, fieldStr.length - 1);
+
+	for (i in vc) {
+		if (i != 'limit' && i != 'order' && i != 'skip' && i != 'orderField') {
+			condition += i + ' = ' + e(valueCol.condition[i], false) + ' and ';
+		}
+	}
+
+	condition = condition.slice(0, condition.length - 5);
+
+	sql = 'SELECT ' + fieldStr + ' FROM ' + valueCol.table + ' WHERE ' + condition;
 
 
 	if (vc.order && vc.orderField && vc.limit && vc.skip) {
