@@ -39,7 +39,7 @@ var img = 'create table Nblog_img (' +
 
 var tag = 'create table Nblog_tag (' +
 'id int primary key not null auto_increment,' +
-'tag_name char(10) unique not null default""' +
+'tag_name char(10) default""' +
 'foreign_p int not null default 0' + 
 ') engine innoDB charset utf8'
 

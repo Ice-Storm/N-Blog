@@ -4,11 +4,54 @@ var db = require('../db/db.js');
 
 
 var dealGet = function (req, res) {
+	var indexData = {};
+
+	async.waterfall([
+		function (cb) {
+			var selectCon = {
+				table: 'Nblog_config',
+				condition: {
+					all: '*'
+				},
+				close: 'true'
+			}
+			db.getData(selectCon, cb);
+		},
+		function (data, cb) {
+			indexData.config = data;
+			var selectMen = {
+				table: 'Nblog_menu',
+				condition: {
+					all: '*'
+				},
+				close: 'true'
+			}
+			db.getData(selectMen, cb);
+		},
+		function (data, cb) {
+			indexData.menu = data;
+			var selectTag = {
+				table: 'Nblog_tag',
+				condition: {
+					all: '*'
+				},
+				close: 'true'
+			}
+			db.getData(selectTag, cb);
+		},
+		function (data, cb) {
+			indexData.tag = data;
+			cb(null, 1);
+		}
+	], function (err, result) {
+		res.render('adminEls', {
+			adminBase: 'adminBase',
+			css: 'adminIndex.adminEls',
+			data:　indexData
+		});
+	})
 	
-	res.render('adminEls', {
-		adminBase: 'adminBase',
-		css: 'adminIndex.adminEls'
-	});
+	
 
 }
 
@@ -67,30 +110,37 @@ var dealPost = function (req, res) {
 		var tagArr = [];
 
 		for (i = 1; i <= 2; i++) {
-			var menu = {};
-			menu.menu_name = req.body['menu_min' + i];
-			menu.table = 'Nblog_menu';
-			menu.close = 'true';
-			menu.foreign_p = 2;
-			menu.condition = {
-				id: i + 3
+			if (req.body['menu_min' + i]) {
+				var menu = {};
+				menu.menu_name = req.body['menu_min' + i];
+				menu.table = 'Nblog_menu';
+				menu.close = 'true';
+				menu.foreign_p = 2;
+				menu.condition = {
+					id: i + 3
+				}
+				arr.push(menu);
 			}
-			arr.push(menu);
+			
 		}
 
 
 		for (i = 1; i <= 6; i++) {
 			var tag = {};
-			tag.tag_name = req.body['tag' + i];
 			tag.table = 'Nblog_tag';
 			tag.close = 'true';
 			tag.foreign_p = 1;
 			tag.condition = {
 				id: i
 			}
-			tagArr.push(tag);
+			if (req.body['tag' + i]) {
+				tag.tag_name = req.body['tag' + i];
+				tagArr.push(tag);
+			} else {
+				tag.tag_name = '';
+				tagArr.push(tag);
+			}
 		}
-
 		async.waterfall([
 			function (cb) {
 				async.each(arr, function (i, callback) {
