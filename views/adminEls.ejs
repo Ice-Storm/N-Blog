@@ -7,14 +7,14 @@
 							<div class = 'input-group'>
 							<span class = 'alert-star'>*</span>
 							博客名称:
-							 <input type = 'text' name = 'blogName' maxlength = '10' value = <%=  data.config[0].blog_name %>>
+							 <input type = 'text' name = 'blogName' maxlength = '10' value = '<%=  data.config[0].blog_name %>'>
 							</div>
 						</li>
 						<li>
 							<div class = 'input-group'>
 							<span class = 'alert-star'>*</span>
 							博客签名:
-							 <input type = 'text' name = 'blogSign' maxlength = '30' value = <%=  data.config[0].blog_sign %>>
+							 <input type = 'text' name = 'blogSign' maxlength = '30' value = '<%=  data.config[0].blog_sign %>'>
 							</div>
 						</li>
 
@@ -24,7 +24,7 @@
 									<div class = 'input-group'>
 									<span class = 'alert-star'>*</span>
 									菜单名称:
-									 <input type = 'text' name = 'blogMenu<%= i %>' maxlength = '10' value = <%= data.menu[i - 1].menu_name %>>
+									 <input type = 'text' name = 'blogMenu<%= i %>' maxlength = '10' value = '<%= data.menu[i - 1].menu_name %>'>
 									</div>
 								</li>
 							<% } %>
@@ -66,8 +66,8 @@
 						<% } %>
 
 
-						<li><div class = 'input-group'>子菜单: <input type = 'text' name = 'menu_min1' maxlength = '10'></div></li>
-						<li><div class = 'input-group'>子菜单: <input type = 'text' name = 'menu_min2' maxlength = '10'></div></li>
+						<li><div class = 'input-group'>子菜单: <input type = 'text' name = 'menu_min1' maxlength = '10' value = '<%= data.childMenu[0].menu_name %>'></div></li>
+						<li><div class = 'input-group'>子菜单: <input type = 'text' name = 'menu_min2' maxlength = '10' value = '<%= data.childMenu[1].menu_name %>'></div></li>
 					</ul>
 				</div>
 				<input type = 'submit' value = '提交' class = 'submit'>

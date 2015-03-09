@@ -1,0 +1,56 @@
+.content {
+	float: right;
+	width: 84%;
+	height: 550px;
+	background-color: #DDEEF2;
+}
+
+.content-sort {
+	width: 98%;
+	height: 35px;
+	background-color: #F4FAFB;
+	margin-left: 1%;
+	margin-top: 10px;
+	border: 1px solid #80BDCB;
+}
+
+.content-publish {
+	height: 25px;
+	width: 8%;
+	margin-top: 5px;
+	margin-left: 88%;
+	position: relative;
+	background-color: #278296;
+	border-radius: 3px;
+}
+
+.content-publish span{
+	display:block;
+	padding-top: 3px;
+	padding-left: 15px;
+	color: #fff;
+}
+
+.upload-img {
+	margin-top: 10px;
+	margin-left: 15%;
+	width: 25%;
+	padding: 30px;
+}
+
+.input-file {
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 200px;
+}
+
+.input-submit {
+	margin-top: 10px;
+	margin-left: 20px;
+	width: 72px;
+}
+
+.img {
+	width: 70%;
+	height: 230px;
+}

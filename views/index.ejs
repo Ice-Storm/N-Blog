@@ -14,9 +14,9 @@
 		<div class = 'header'>
 			<div class = 'logo-area'>
 				<div class = 'logo-font'>
-					<span>清源的博客</span>
+					<span><%= data.config[0].blog_name %></span>
 					<div class = 'logo-small-font'>
-						<span>以大多数人的努力程度之低 根本轮不到拼天赋</span>
+						<span><%= data.config[0].blog_sign %></span>
 					</div>
 				</div>
 			</div>
@@ -24,11 +24,11 @@
 			<div class = 'menu-top'>
 				<ul class = 'menu-list'>
 					<li>
-						<span>Artical</span>
+						<span><%= data.menu[0].menu_name %></span>
 						<span class = 'menu-draw'></span>
 					</li>
-					<li>Who am I</li>
-					<li>Tell me</li>
+					<li><%= data.menu[1].menu_name %></li>
+					<li><%= data.menu[2].menu_name %></li>
 				</ul>
 			</div>
 		</div>
@@ -36,76 +36,29 @@
 		<div class = 'content'>
 			<div class = 'content-artical-bg'>
 
-				<div class = 'content-artical-artical'>
-					<img src = 'img/7.jpg' class = 'content-img'>
-					<div class = 'content-artical-header'>
-						<span class = 'content-artical-title'>Nblog的测试文章</span>
-						<div class = 'content-artical-meg'>
-							<span>2015-01-29 · 0 条评论 · 清源</span>
+				<% for (var i = 0; i < data.artical.length; i++){ %>
+
+					<div class = 'content-artical-artical'>
+
+						<% if (data.artical[i].img){ %>
+							<img src = 'uploadImg/<%= data.artical[i].img %>' class = 'content-img'>
+						<% } %>
+
+						<div class = 'content-artical-header'>
+							<span class = 'content-artical-title'><%= data.artical[i].title %></span>
+							<div class = 'content-artical-meg'>
+								<span><%= data.artical[i].time %> · <%= data.artical[i].comCount %> 条评论 · <%= data.artical[i].author %></span>
+							</div>
+						</div>
+						<div class = 'content-artical-content'>
+								<%- data.artical[i].content %>
+						</div>
+						<div class = 'content-artical-next'>
+							<span>继续阅读 >></span>
 						</div>
 					</div>
-					<div class = 'content-artical-content'>
-							每次单步运行一条语句后，都可以通过Watch（监视）窗口观察有关变量的值，或者将鼠标光标移动到源程序中的某个需要观察的变量上，停留一秒钟就可以看到这个变量的值，如图17所示。	如果我们确认当前函数中没有错误时，可以使用Step Out命令快速地执行完毕当前的函数，暂停在该函数调用的下一条语句上。
-							如果我们确认某一段源代码中没有错误时，可以将键盘光标（插入符）放置在这段代码的末尾处，使用Run to Cursor（运行到光标处）命令快速地执行完毕这一段代码，
-					</div>
-					<div class = 'content-artical-next'>
-						<span>继续阅读 >></span>
-					</div>
-				</div>
 
-
-
-				<div class = 'content-artical-artical'>
-					<img src = 'img/10.jpg' class = 'content-img'>
-					<div class = 'content-artical-header'>
-						<span class = 'content-artical-title'>Nblog的测试文章</span>
-						<div class = 'content-artical-meg'>
-							<span>2015-01-29 · 0 条评论 · 清源</span>
-						</div>
-					</div>
-					<div class = 'content-artical-content'>
-							每次单步运行一条语句后，都可以通过Watch（监视）窗口观察有关变量的值，或者将鼠标光标移动到源程序中的某个需要观察的变量上，停留一秒钟就可以看到这个变量的值，如图17所示。	如果我们确认当前函数中没有错误时，可以使用Step Out命令快速地执行完毕当前的函数，暂停在该函数调用的下一条语句上。
-							如果我们确认某一段源代码中没有错误时，可以将键盘光标（插入符）放置在这段代码的末尾处，使用Run to Cursor（运行到光标处）命令快速地执行完毕这一段代码，
-					</div>
-					<div class = 'content-artical-next'>
-						<span>继续阅读 >></span>
-					</div>
-				</div>
-
-				<div class = 'content-artical-artical'>
-					<img src = 'img/12.jpg' class = 'content-img'>
-					<div class = 'content-artical-header'>
-						<span class = 'content-artical-title'>Nblog的测试文章</span>
-						<div class = 'content-artical-meg'>
-							<span>2015-01-29 · 0 条评论 · 清源</span>
-						</div>
-					</div>
-					<div class = 'content-artical-content'>
-							每次单步运行一条语句后，都可以通过Watch（监视）窗口观察有关变量的值，或者将鼠标光标移动到源程序中的某个需要观察的变量上，停留一秒钟就可以看到这个变量的值，如图17所示。	如果我们确认当前函数中没有错误时，可以使用Step Out命令快速地执行完毕当前的函数，暂停在该函数调用的下一条语句上。
-							如果我们确认某一段源代码中没有错误时，可以将键盘光标（插入符）放置在这段代码的末尾处，使用Run to Cursor（运行到光标处）命令快速地执行完毕这一段代码，
-					</div>
-					<div class = 'content-artical-next'>
-						<span>继续阅读 >></span>
-					</div>
-				</div>
-
-				<div class = 'content-artical-artical'>
-					<img src = 'img/11.jpg' class = 'content-img'>
-					<div class = 'content-artical-header'>
-						<span class = 'content-artical-title'>Nblog的测试文章</span>
-						<div class = 'content-artical-meg'>
-							<span>2015-01-29 · 0 条评论 · 清源</span>
-						</div>
-					</div>
-					<div class = 'content-artical-content'>
-							每次单步运行一条语句后，都可以通过Watch（监视）窗口观察有关变量的值，或者将鼠标光标移动到源程序中的某个需要观察的变量上，停留一秒钟就可以看到这个变量的值，如图17所示。	如果我们确认当前函数中没有错误时，可以使用Step Out命令快速地执行完毕当前的函数，暂停在该函数调用的下一条语句上。
-							如果我们确认某一段源代码中没有错误时，可以将键盘光标（插入符）放置在这段代码的末尾处，使用Run to Cursor（运行到光标处）命令快速地执行完毕这一段代码，
-					</div>
-					<div class = 'content-artical-next'>
-						<span>继续阅读 >></span>
-					</div>
-				</div>
-
+				<% } %>
 
 				<div class = 'content-artical-page'>
 					<div class = 'content-artical-page-previous'>
@@ -121,31 +74,24 @@
 			</div> 
 		</div>
 
-
-
 		<div>
 
 		<div class = 'right-col'>
 			 <div>
 			 	<div class = 'right-col-img'>
 			 		<div class = 'right-col-img-border'>
-			 			<img src = 'img/1.jpg' class = 'right-col-img-size'>
+			 			<img src = 'uploadImg/<%= data.config[0].blog_right_img %>' class = 'right-col-img-size'>
 			 		</div>
 			 		<div class = 'right-col-img-tag'>
 			 			<div class = 'right-col-img-tag-font-title'>标签</div>
-			 			<div  class = 'right-col-img-tag-tag'>
-			 				<span class = 'right-col-img-tag-font'>文艺青年</span>
-			 			</div>
-			 			<div  class = 'right-col-img-tag-tag'>
-			 				<span class = 'right-col-img-tag-font'>黑客</span>
-			 			</div>
-			 			<div  class = 'right-col-img-tag-tag'>
-			 				<span class = 'right-col-img-tag-font'>爱旅游</span>
-			 			</div>
-			 			<div  class = 'right-col-img-tag-tag'>
-			 				<span class = 'right-col-img-tag-font'>好交友</span>
-			 			</div>
-			 			
+
+			 			<% for (i = 0; i < data.tag.length; i++){ %>
+			 				<% if (data.tag[i].tag_name){ %>
+			 					<div  class = 'right-col-img-tag-tag'>
+					 				<span class = 'right-col-img-tag-font'><%= data.tag[i].tag_name %></span>
+					 			</div>
+			 				<% } %>
+			 			<% } %>
 			 		</div>
 			 	</div>
 
@@ -183,14 +129,15 @@
 	 			<div class = 'footer-line'></div>
 	 			<div class = 'footer-font'>
 	 				<ul>
-	 					<li><a href= '#'>源码地址</a></li>
-	 					<li>@_@  2015 清源的博客 —— All Rights Reserved</li>
+	 					<li>
+	 						<a href= '<%= data.config[0].blog_address %>'>源码地址</a>
+	 					</li>
+	 					<li><%= data.config[0].blog_rights %></li>
 	 				</ul>
 	 			</div>
 			</div>
 		</div>
 
 		</div>
-
 	</div>
 </body>

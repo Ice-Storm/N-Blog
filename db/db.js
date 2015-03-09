@@ -112,17 +112,39 @@ var getData = function (valueCol, cb) {
 		throw 'Table name is not exists';
 	}
 
-	if (!valueCol.condition){
-		throw 'Condition is not exists';
-	}
-
 	var fieldStr = '';
 	var sql = '';
 	var condition = '';
 	var fieldArr = valueCol.field;
-	var vc = valueCol.condition;
+	var vc = '';
 
-	if (!valueCol.condition.all) {
+	if (valueCol.condition) {
+		vc = valueCol.condition;
+	}
+
+	if (fieldArr) {
+		for (var i = 0; i < fieldArr.length; i++) {
+			if (valueCol.fun && judgeObjLen(valueCol.fun)) {
+				for(var j in valueCol.fun) {
+					if (fieldArr[i] == valueCol.fun[j]) {
+						fieldStr += j + ' ( ' + fieldArr[i]  + ' ) as time' + ',';
+						delete valueCol.fun[j];
+					} else {
+						fieldStr += e(fieldArr[i], true) + ',';
+					}
+				}		
+			} else {
+				fieldStr += e(fieldArr[i], true) + ',';
+			}
+		}
+
+		fieldStr = fieldStr.slice(0, fieldStr.length - 1);
+	}
+
+	sql = 'SELECT ' + fieldStr + ' FROM ' + valueCol.table;
+
+
+	if (valueCol.condition && !valueCol.condition.all) {
 		if (!valueCol.field && valueCol.field.constructor != '[Function: Array]') {
 			throw 'Field is not exists or type error';
 		}
@@ -133,13 +155,7 @@ var getData = function (valueCol, cb) {
 			throw 'No condition';
 		}
 
-		for (var i = 0; i < fieldArr.length; i++) {
-			fieldStr += e(fieldArr[i], true) + ',';	
-		}
-
-		fieldStr = fieldStr.slice(0, fieldStr.length - 1);
-
-		for (i in vc) {
+		for (i in valueCol.condition) {
 			if (i != 'limit' && i != 'order' && i != 'skip' && i != 'orderField') {
 				condition += i + ' = ' + e(valueCol.condition[i], false) + ' and ';
 			}
@@ -147,34 +163,35 @@ var getData = function (valueCol, cb) {
 
 		condition = condition.slice(0, condition.length - 5);
 
-		sql = 'SELECT ' + fieldStr + ' FROM ' + valueCol.table + ' WHERE ' + condition;
+		sql += ' WHERE ' + condition;
 
-	} else {
+	} else if (valueCol.condition && valueCol.condition.all) {
 
 		sql = 'SELECT * FROM ' + valueCol.table;
 		
 	}
 
-	
-
-
 	if (vc.order && vc.orderField && vc.limit && vc.skip) {
-		sql += e(vc.orderField) + ' ' + vc.order + ' limit ' + vc.skip + ' , ' + vc.limit; 
+		sql += ' ORDER BY ' + vc.orderField + ' ' + vc.order + ' limit ' + vc.skip + ' , ' + vc.limit; 
 	} else if (!vc.order && !vc.orderField && vc.limit && vc.skip) {
 		sql += ' LIMIT ' + vc.skip + ' , ' + vc.limit;
 	} else if (!vc.order && !vc.orderField && vc.limit && !vc.skip) {
 		sql += ' LIMIT ' +  vc.limit;
 	} else if (vc.order && vc.orderField && !vc.limit && !vc.skip) {
-		sql += ' ORDER BY ' + e(vc.orderField) + ' ' + vc.order;
+		sql += ' ORDER BY ' + vc.orderField + ' ' + vc.order;
 	} else if (!vc.order && vc.orderField && !vc.limit && !vc.skip) {
-		sql += ' ORDER BY ' + e(vc.orderField);
+		sql += ' ORDER BY ' + vc.orderField;
 	} else if (!vc.order && vc.orderField && vc.limit && !vc.skip) {
-		sql += ' ORDER BY ' + e(vc.orderField) + ' LIMIT ' + vc.limit;
+		sql += ' ORDER BY ' + vc.orderField + ' LIMIT ' + vc.limit;
 	} else if (!vc.order && !vc.orderField && !vc.limit && !vc.skip){
 		sql = sql;
+	} else if (vc.order && vc.orderField && vc.limit && !vc.skip) {
+		sql += ' ORDER BY ' + vc.orderField + ' ' + vc.order + ' limit ' + vc.limit; 
 	} else {
 		throw 'SQL Error'
 	}
+
+	console.log(sql)
 
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');
@@ -189,6 +206,8 @@ var getData = function (valueCol, cb) {
 var del = function (valueCol, cb) {
 	if (typeof valueCol != "object") {
 		throw 'Del parameter type err';
+
+
 	}
 
 	if (!valueCol.table){
@@ -270,12 +289,25 @@ var getResultCount = function (valueCol, cb) {
 	} 
 
 	var sql = '';
+	var condition = '';
 
 	if (valueCol.rename) {
 		sql = 'SELECT  COUNT (*) AS ' + valueCol.rename + ' FROM ' + valueCol.table;
 	} else {
 		sql = 'SELECT  COUNT (*) FROM ' + valueCol.table;
 	}
+
+	if (valueCol.condition && judgeObjLen(valueCol.condition)) {
+		for (i in valueCol.condition) {
+			condition += i + ' = ' + e(valueCol.condition[i], false) + ' and ';
+		}
+
+		condition = condition.slice(0, condition.length - 5);
+
+		sql += ' WHERE ' + condition;
+	}
+
+	console.log(sql);
 
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');

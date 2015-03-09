@@ -10,16 +10,18 @@ var artical = 'create table Nblog_artical (' +
 'flag tinyint not null default 0' +
 ') engine innoDB charset utf8' 
 
-var comment = 'create table Nblog_artical (' +
+var comment = 'create table Nblog_comment (' +
 'id int primary key not null auto_increment, ' +
 'content varchar(500) not null default "", ' +
 'time timestamp not null default NOW(), ' +
 'author char(15) not null default "",' + 
-'email char(22) not null default ""' + 
+'email char(22) not null default "",' + 
+'foreign_p bigint not null default 0' + 
 ') engine innoDB charset utf8' 
 
 var admin = 'create table Nblog_admin (' +
 'id int primary key not null auto_increment,' +
+'name char(8) not null unique,' + //昵称
 'user char(15) not null unique default "",' +
 'password char(15) not null default "",' +
 'flag tinyint not null default 0,' +
@@ -86,7 +88,6 @@ module.exports.admin = admin;
 module.exports.config = config;
 
 module.exports.menu = menu;
-
 
 module.exports.img = img;
 

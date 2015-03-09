@@ -41,6 +41,18 @@ var dealGet = function (req, res) {
 		},
 		function (data, cb) {
 			indexData.tag = data;
+			var selectMenu = {
+				table: 'Nblog_menu',
+				condition: {
+					all: '*',
+					foreign_p: 2
+				},
+				close: 'true'
+			}
+			db.getData(selectMenu, cb);
+		},
+		function (data, cb) {
+			indexData.childMenu = data;
 			cb(null, 1);
 		}
 	], function (err, result) {
@@ -50,9 +62,6 @@ var dealGet = function (req, res) {
 			data:　indexData
 		});
 	})
-	
-	
-
 }
 
 var dealPost = function (req, res) {

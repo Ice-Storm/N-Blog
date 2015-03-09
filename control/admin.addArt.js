@@ -111,8 +111,6 @@ var dealPost = function (req, res) {
 			res.redirect('/admin/adminIndex/dealRightMenuList/art/1/');
 		})
 	}
-
-	
 }
 
 module.exports.dealGet = dealGet;

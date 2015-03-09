@@ -78,7 +78,6 @@ body {
 
 .content-artical-bg {
 	width: 85%;
-	height: 800px;
 	background-color: #fff;
 	border-top-right-radius: 10px;
 	border-top-left-radius: 10px;
@@ -124,6 +123,7 @@ body {
 	margin-top: 30px;
 	margin-left: 5%;
 	margin-right: 5%;
+	overflow: hidden;
 }
 
 .content-artical-next {
