@@ -42,10 +42,10 @@ body {
 
 .menu-top {
 	float: right;
-	margin-right: 10%;
+	margin-right: 5%;
 	background-color: #fff;
 	height: 120px;
-	width: 30%;
+	width: 34%;
 	margin-top: 30px;
 }
 
@@ -70,7 +70,7 @@ body {
 
 .content {
 	float: left;
-	width: 65%;
+	width: 70%;
 	background-color: #fff;
 	margin-top: -45px;
 	
@@ -189,10 +189,8 @@ body {
 	margin-left: 5px;
 }
 
-
-
 .right-col {
-	width: 35%;
+	width: 30%;
 	background-color: #fff;
 	float: right;
 }
@@ -214,7 +212,7 @@ body {
 
 .right-col-img {
 	width: 71%;
-	height: 300px;
+	height: 250px;
 	background-color: #fff;
 	padding-top: 5px;
 	margin-bottom: 100px;

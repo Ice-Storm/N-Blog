@@ -15,7 +15,8 @@ var comment = 'create table Nblog_comment (' +
 'content varchar(500) not null default "", ' +
 'time timestamp not null default NOW(), ' +
 'author char(15) not null default "",' + 
-'email char(22) not null default "",' + 
+'email char(22) not null default "",' +
+'to int not null default 0,' +  //谁回复谁
 'foreign_p bigint not null default 0' + 
 ') engine innoDB charset utf8' 
 
