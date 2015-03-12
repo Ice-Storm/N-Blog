@@ -17,7 +17,8 @@ var comment = 'create table Nblog_comment (' +
 'author char(15) not null default "",' + 
 'email char(22) not null default "",' +
 'to int not null default 0,' +  //谁回复谁
-'foreign_p bigint not null default 0' + 
+'foreign_p bigint not null default 0,' +
+'replay_p int not null default 0' + // 子回复 
 ') engine innoDB charset utf8' 
 
 var admin = 'create table Nblog_admin (' +
@@ -51,7 +52,8 @@ var config = 'create table Nblog_config (' +
 'blog_name char(10) not null default"",' +
 'blog_sign char(30) not null default"",' +
 'blog_rights char(50) not null default "",' +
-'blog_right_img int not null default"",' +
+'blog_right_img char(20) not null default "",' +
+'blog_artical_img char(20) not null default "",' +
 'blog_address varchar(100) not null default "",'+
 'blog_github varchar(100) not null default "",'+
 'blog_menu_p int not null default 0,' + //首页上面三个主菜单选项

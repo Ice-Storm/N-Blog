@@ -36,6 +36,7 @@
 	margin-left: 15%;
 	width: 25%;
 	padding: 30px;
+	float: left;
 }
 
 .input-file {
@@ -51,6 +52,6 @@
 }
 
 .img {
-	width: 70%;
-	height: 230px;
+	width: 60%;
+	height: 180px;
 }

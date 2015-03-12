@@ -19,7 +19,9 @@ var articalRegExp = /artical\/(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9
 module.exports = function (router) {
 	router.get('/', indexCon.index);
 
-	router.get(articalRegExp, artical.artical);
+	router.get(articalRegExp, artical.articalGet);
+
+	router.post(articalRegExp, artical.articalPost)
 
 	router.get('/admin/adminindex', function (req, res) {
 		res.render("adminindex.ejs", {
