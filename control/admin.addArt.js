@@ -103,6 +103,7 @@ var dealPost = function (req, res) {
 			title: req.body.title,
 			content: req.body.content,
 			img_p: req.session.articalID,
+			com_p: new Date().getTime(),
 			flag: req.body.flag,
 			close: 'true'
 		}
