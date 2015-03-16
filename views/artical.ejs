@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/ini.css'>
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/artical.css'>
+	<script src = '/javascript/require.js' data-main = '/javascript/artical/artical.main'></script>
 </head>
                      
 <body>
@@ -12,9 +13,9 @@
 		<div class = 'header'>
 			<div class = 'logo-area'>
 				<div class = 'logo-font'>
-					<span>清源</span>
+					<span><%= data.config[0].blog_name %></span>
 					<div class = 'logo-small-font'>
-						<span>以大多数人的努力程度之底 更不轮不到拼天赋</span>
+						<span><%= data.config[0].blog_sign %></span>
 					</div>
 				</div>
 			</div>
@@ -22,11 +23,11 @@
 			<div class = 'menu-top'>
 				<ul class = 'menu-list'>
 					<li>
-						<span>Artical</span>
+						<span><%= data.menu[0].menu_name %></span>
 						<span class = 'menu-draw'></span>
 					</li>
-					<li>Who am I</li>
-					<li>Tell me</li>
+					<li><%= data.menu[1].menu_name %></li>
+					<li><%= data.menu[2].menu_name %></li>
 				</ul>
 			</div>
 		</div>
@@ -35,7 +36,7 @@
 			<div class = 'content-artical'>
 				<div class = 'content-artical-artical'>
 					<div class = 'content-artical-header'>
-						<span class = 'content-artical-header-title'>测试文章</span>
+						<span class = 'content-artical-header-title'><%= data.artical[0].title %></span>
 						<div>
 							<span class = 'content-artical-header-meg'>
 								2015-3-6 · 0 条评论 · 清源
@@ -43,23 +44,16 @@
 						</div>
 					</div>
 					<div class = 'content-artical-content'>
-						读万卷书”是指应该全面吸收书本知识，使自己具有渊博、扎实的文化素养
-						行万里路是指亲身的社会实践
-						读万卷书是指努力积累知识，为更加深入的实践做准备
-						行万里路是指在你的知识已经积累到一定程度的前提下所进行的实践
-						<img src = '/uploadImg/1.jpg' style = 'width:100%;'>
-						两者的关系是量变与质变得关系，我们今天讨论的是不是二者谁优谁劣，而是立足当下，谁更加有利于我们认识世界
+						<%= data.artical[0].content %>
 					</div>
 
 					<div class = 'content-artical-public'>
 						<p class = 'content-artical-public-title'>推荐文章</p>
 						<div class = 'content-artical-public-content'>
 							<ul>
-								<li><a href = '#'>道哥的黑板报 - 走在创业路上的文艺白帽子</a></li>
-								<li><a href = '#'>道哥的黑板报 - 走在创业路上的文艺白帽子</a></li>
-								<li><a href = '#'>道哥的黑板报 - 走在创业路上的文艺白帽子</a></li>
-								<li><a href = '#'>道哥的黑板报 - 走在创业路上的文艺白帽子</a></li>
-								<li><a href = '#'>道哥的黑板报 - 走在创业路上的文艺白帽子</a></li>
+								<% for (var i = 0; i < data.pubArtical.length; i++) { %>
+									<li><a href = '#'><%= data.pubArtical[i].title %></a></li>
+								<% } %>
 							</ul>
 						</div>
 					</div>
@@ -67,51 +61,82 @@
 					<div class = 'division-line'></div>
 
 					<div class = 'content-artical-replay'>
-						<div class = 'content-artical-replay-img-all'>
-							<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
-							<p>&nbsp;Reply</p>
-						</div>
-						<div class = 'content-artical-replay-where'></div>
-
-						<div class = 'content-artical-replay-content'>
-							<p class = 'content-artical-replay-content-time'>2015-3-10 12:35</p>
-							<p class = 'content-artical-replay-content-title'>小叶子</p>
-							<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
-							</p>
-
-							<p class = 'content-artical-replay-replay'>回复</p>
-
-						</div>
-
-						<div class = 'content-artical-replay-img-all'>
-							<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
-							<p>&nbsp;Reply</p>
-						</div>
-						<div class = 'content-artical-replay-where'></div>
-
-						<div class = 'content-artical-replay-content'>
-							<p class = 'content-artical-replay-content-time'>2015-3-10 12:35</p>
-							<p class = 'content-artical-replay-content-title'>小叶子</p>
-							<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
-							</p>
-
-							<p class = 'content-artical-replay-replay'>回复</p>
-							
-					
-							<div class = 'content-artical-replay-ch'>
-								<img src = '/uploadImg/1.jpg' class ='content-artical-replay-img'>
-								<p>&nbsp;Reply</p>
-								<div class = 'content-artical-replay-ch-content'>
-									<p class = 'content-artical-replay-ch-title'>毛蛋子</p>
-									<p class = 'content-artical-replay-content-ch-time'>
-										2015-3-10 12:35
-									</p>
-									<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
-									</p>
-									<p class = 'content-artical-replay-replay'>回复</p>
+						<% for (var i = 0; i < data.comment.length; i++){ %>
+							<% if (data.comment[i].id != -1){ %>
+							<div class = 'content-artical-replay-block'>
+								<div class = 'content-artical-replay-img-all'>
+									<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
+									<p>&nbsp;Reply</p>
 								</div>
+								<div class = 'content-artical-replay-where'></div>
+
+								<div class = 'content-artical-replay-content'>
+									<p class = 'content-artical-replay-content-time'>2015-3-10 12:35</p>
+									<p class = 'content-artical-replay-content-title'>小叶子</p>
+									<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
+									</p>
+
+									<p class = 'content-artical-replay-replay'>
+										回复
+									</p>
+
+									<% while (data.comment[i].rep.length > 0){ %>
+										<div class = 'content-artical-replay-ch'>
+											<img src = '/uploadImg/1.jpg' class ='content-artical-replay-img'>
+											<p>&nbsp;Reply</p>
+											<div class = 'content-artical-replay-ch-content'>
+												<p class = 'content-artical-replay-ch-title'>毛蛋子</p>
+												<p class = 'content-artical-replay-content-ch-time'>
+													2015-3-10 12:35
+												</p>
+												<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
+												</p>
+												<p class = 'content-artical-replay-replay'>回复</p>
+											</div>
+										</div>
+										<script>console.log(1)</script>
+										<% data.comment[i] = data.comment[i].rep[0][0] %>
+									<% } %>
+								</div>
+							</div>		
+							<% } %>
+						<% } %>
+						
+
+						<!-- <div class = 'content-artical-replay-block'>
+							<div class = 'content-artical-replay-img-all'>
+								<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
+								<p>&nbsp;Reply</p>
 							</div>
-						</div>
+							<div class = 'content-artical-replay-where'></div>
+
+							<div class = 'content-artical-replay-content'>
+								<p class = 'content-artical-replay-content-time'>2015-3-10 12:35</p>
+								<p class = 'content-artical-replay-content-title'>小叶子</p>
+								<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
+								</p>
+
+								<p class = 'content-artical-replay-replay' id = '6'>
+									回复
+								</p>
+								
+						
+								<div class = 'content-artical-replay-ch'>
+									<img src = '/uploadImg/1.jpg' class ='content-artical-replay-img'>
+									<p>&nbsp;Reply</p>
+									<div class = 'content-artical-replay-ch-content'>
+										<p class = 'content-artical-replay-ch-title'>毛蛋子</p>
+										<p class = 'content-artical-replay-content-ch-time'>
+											2015-3-10 12:35
+										</p>
+										<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
+										</p>
+										<p class = 'content-artical-replay-replay'>回复</p>
+									</div>
+								</div>
+
+							</div>
+						</div> -->
 					</div>
 
 
@@ -121,6 +146,7 @@
 						<div class = 'content-artical-comment-content'>
 							<span class = 'content-artical-comment-title'>Leave a Reply</span>
 							<form action = '' method = 'POST'>
+								<a name = 'addReplay'></a>
 								<div class = 'content-artical-btn-group'>
 									<label for = 'author'>
 										Author:
@@ -152,21 +178,11 @@
 					<p class = 'right-bar-content-title'>近期评论</p>
 
 					<ul>
+						<% for (var i = 0; i < data.recentlyReplay.length; i++){ %>
 						<li>
-							<span>御前男捕快</span> 发表在《<a href = '#'>【WinOMeter】记录鼠标键盘敲击次数/移动距离的小工具</a>》
+							<span><%= data.recentlyReplay[i].author %></span> 发表在《<a href = '#'><%= data.recentlyReplay[i].title %></a>》
 						</li>
-						<li>
-							<span>御前男捕快</span> 发表在《<a href = '#'>道哥的黑板报</a>》
-						</li>
-						<li>
-							<span>御前男捕快</span> 发表在《<a href = '#'>【WinOMeter】记录鼠标键盘敲击次数/移动距离的小工具</a>》
-						</li>
-						<li>
-							<span>御前男捕快</span> 发表在《<a href = '#'>【WinOMeter】记录鼠标键盘敲击次数/移动距离的小工具</a>》
-						</li>
-						<li>
-							<span>御前男捕快</span> 发表在《<a href = '#'>【WinOMeter】记录鼠标键盘敲击次数/移动距离的小工具</a>》
-						</li>
+						<% } %>
 					</ul>
 
 					<div class = 'right-bar-fun'>
