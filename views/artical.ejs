@@ -39,7 +39,7 @@
 						<span class = 'content-artical-header-title'><%= data.artical[0].title %></span>
 						<div>
 							<span class = 'content-artical-header-meg'>
-								2015-3-6 · 0 条评论 · 清源
+								<%= data.artical[0].time %> · <%= data.artical[0].count %> 条评论 · 清源
 							</span>
 						</div>
 					</div>
@@ -52,7 +52,9 @@
 						<div class = 'content-artical-public-content'>
 							<ul>
 								<% for (var i = 0; i < data.pubArtical.length; i++) { %>
-									<li><a href = '#'><%= data.pubArtical[i].title %></a></li>
+									<li>
+										<a href = '/artical/<%= data.pubArtical[i].time %>/<%= data.pubArtical[i].title %>'><%= data.pubArtical[i].title %></a>
+									</li>
 								<% } %>
 							</ul>
 						</div>
@@ -62,7 +64,7 @@
 
 					<div class = 'content-artical-replay'>
 						<% for (var i = 0; i < data.comment.length; i++){ %>
-							<% if (data.comment[i].id != -1){ %>
+							<% if (data.comment[i].flag != -1){ %>
 							<div class = 'content-artical-replay-block'>
 								<div class = 'content-artical-replay-img-all'>
 									<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
@@ -71,72 +73,38 @@
 								<div class = 'content-artical-replay-where'></div>
 
 								<div class = 'content-artical-replay-content'>
-									<p class = 'content-artical-replay-content-time'>2015-3-10 12:35</p>
-									<p class = 'content-artical-replay-content-title'>小叶子</p>
-									<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
+									<p class = 'content-artical-replay-content-time'><%= data.comment[i].time %></p>
+									<p class = 'content-artical-replay-content-title'><%= data.comment[i].author %></p>
+									<p class = 'content-artical-replay-content-content'>
+										<%= data.comment[i].content %>
 									</p>
 
-									<p class = 'content-artical-replay-replay'>
+									<p class = 'content-artical-replay-replay' id = '<%= data.comment[i].id %>'>
 										回复
 									</p>
 
 									<% while (data.comment[i].rep.length > 0){ %>
+										<% data.comment[i] = data.comment[i].rep[0][0] %>
 										<div class = 'content-artical-replay-ch'>
 											<img src = '/uploadImg/1.jpg' class ='content-artical-replay-img'>
 											<p>&nbsp;Reply</p>
 											<div class = 'content-artical-replay-ch-content'>
-												<p class = 'content-artical-replay-ch-title'>毛蛋子</p>
+												<p class = 'content-artical-replay-ch-title'><%= data.comment[i].author %></p>
 												<p class = 'content-artical-replay-content-ch-time'>
-													2015-3-10 12:35
+													<%= data.comment[i].time %>
 												</p>
-												<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
+												<p class = 'content-artical-replay-content-content'><%= data.comment[i].content %>
 												</p>
-												<p class = 'content-artical-replay-replay'>回复</p>
+												<p class = 'content-artical-replay-replay' id = '<%= data.comment[i].id %>'>回复</p>
 											</div>
 										</div>
-										<script>console.log(1)</script>
-										<% data.comment[i] = data.comment[i].rep[0][0] %>
+
+										
 									<% } %>
 								</div>
 							</div>		
 							<% } %>
 						<% } %>
-						
-
-						<!-- <div class = 'content-artical-replay-block'>
-							<div class = 'content-artical-replay-img-all'>
-								<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
-								<p>&nbsp;Reply</p>
-							</div>
-							<div class = 'content-artical-replay-where'></div>
-
-							<div class = 'content-artical-replay-content'>
-								<p class = 'content-artical-replay-content-time'>2015-3-10 12:35</p>
-								<p class = 'content-artical-replay-content-title'>小叶子</p>
-								<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
-								</p>
-
-								<p class = 'content-artical-replay-replay' id = '6'>
-									回复
-								</p>
-								
-						
-								<div class = 'content-artical-replay-ch'>
-									<img src = '/uploadImg/1.jpg' class ='content-artical-replay-img'>
-									<p>&nbsp;Reply</p>
-									<div class = 'content-artical-replay-ch-content'>
-										<p class = 'content-artical-replay-ch-title'>毛蛋子</p>
-										<p class = 'content-artical-replay-content-ch-time'>
-											2015-3-10 12:35
-										</p>
-										<p class = 'content-artical-replay-content-content'>一直使用The OldReader订阅看，看完这个还是回来表现下存在，嘿嘿。
-										</p>
-										<p class = 'content-artical-replay-replay'>回复</p>
-									</div>
-								</div>
-
-							</div>
-						</div> -->
 					</div>
 
 
@@ -166,10 +134,12 @@
 					</div>
 				</div>
 			</div>
+
+
 			<div class = 'right-bar'>
 				<div class = 'right-bar-img'>
 					<div class = 'right-bar-img-border'>
-						<img src = '/uploadImg/2.jpg' class = 'right-bar-img-size'>
+						<img src = '/uploadImg/<%= data.config[0].blog_artical_img %>' class = 'right-bar-img-size'>
 					</div>
 					<P class = 'right-bar-img-introduce'>我的微信 ^ ^</P>
 				</div>
@@ -188,13 +158,32 @@
 					<div class = 'right-bar-fun'>
 						<p class = 'right-bar-content-title'>功能</p>
 						<ul class = 'right-bar-content-fun'>
-							<li>> 登录</li>
-							<li>> Github</li>
+							<li>
+								<a href = '<%= data.config[0].blog_address %>'>> 登录</a>
+							</li>
+							<li>
+								<a href = '<%= data.config[0].blog_github %>'>> Github</a>
+							</li>
 						</ul>
 					</div>
 				</div>
 
 			</div>
 		</div>
+
+		<div class = 'footer'>
+			<div>
+	 			<div class = 'footer-line'></div>
+	 			<div class = 'footer-font'>
+	 				<ul>
+	 					<li>
+	 						<a href= '<%= data.config[0].blog_address %>'>源码地址</a>
+	 					</li>
+	 					<li><%= data.config[0].blog_rights %></li>
+	 				</ul>
+	 			</div>
+			</div>
+		</div>
+
 	</div>
 </body>

@@ -30,7 +30,7 @@ var dataObj = {
 
 	selPubArticalObj: {
 		table: 'nblog_artical',
-		field: ['title'],
+		field: ['title', 'time'],
 		condition: {
 			1:1,
 			skip: 1,
@@ -147,12 +147,15 @@ var articalGet = function (req, res) {
 				})
 			}]
 		}, function (err, result) {
+			//时间转换应该写个通用函数重构
+
+
 			req.session.com_p = result.artical[0].com_p;
 			// 合并结果集
 			for (var i = 0; i < result.recentlyReplayTitle.length; i++) {
 				result.recentlyReplayTitle[i] = result.recentlyReplayTitle[i][0];
 				result.recentlyReplay[i].title = result.recentlyReplayTitle[i].title;
-			} 
+			}
 
 			delete result.recentlyReplayTitle;
 
@@ -163,19 +166,58 @@ var articalGet = function (req, res) {
 			delete result.artical[0].com_p;
 
 			for (var i = 0; i < result.comment.length; i++) {
+				var t;
+
+				var commentTime = result.comment[i].time.toString();
+
+				if (commentTime.length == 10) {
+					t = new Date(result.comment[i].time * 1000);
+				} else {
+					t = new Date(result.comment[i].time);
+				}
+
 				result.comment[i].rep = [];
+				var time = t.getFullYear() + '-' + eval(t.getMonth() + 1) + '-' + t.getDate() + '  ' + t.getHours() + ':' + t.getMinutes();
+				result.comment[i].time = time;
 				for (var j = 0; j < result.comment.length; j++) {
 					if (result.comment[i].id == result.comment[j].replay_p) {
 						result.comment[i].rep.push(result.comment.slice(j, j + 1));
-						result.comment[j].id = -1;
+						result.comment[j].flag = -1;
 					}
 				}
 			}
-			//console.log(data.comment[].rep);
-			console.log(result.comment[result.comment.length - 1]);
-			console.log('-------------------')
-			console.log(result.comment[result.comment.length - 1].rep[0][0]);
 
+			var t;
+
+			var articalTime = result.artical[0].time.toString();
+
+			if (articalTime.length == 10) {
+				t = new Date(result.artical[0].time * 1000);
+			} else {
+				t = new Date(result.artical[0].time);
+			}
+
+
+
+			result.artical[0].time = t.getFullYear() + '-' + eval(t.getMonth() + 1) + '-' + t.getDate();
+
+			
+
+			for (var i = 0; i < result.pubArtical.length; i++) {
+				var t;
+
+				var pubArticalTime = result.pubArtical[i].time.toString();
+
+				if (pubArticalTime.length == 10) {
+					t = new Date(result.pubArtical[i].time * 1000);
+				} else {
+					t = new Date(result.pubArtical[i].time);
+				}
+
+				var time = t.getFullYear() + '-' + eval(t.getMonth() + 1) + '-' + t.getDate();
+				result.pubArtical[i].time = time;
+				
+			}
 
 			res.render('artical', {
 				data: result

@@ -2,6 +2,8 @@ var indexCon = require('../control/index.c.js');
 
 var artical = require('../control/artical.c.js');
 
+var whoAmI = require('../control/whoAmI.c.js');
+
 var adminMan = require('../control/admin.man.js');
 
 var adminSta = require('../control/admin.sta.js');
@@ -18,6 +20,8 @@ var articalRegExp = /artical\/(([0-9]{3}[1-9]|[0-9]{2}[1-9][0-9]{1}|[0-9]{1}[1-9
 
 module.exports = function (router) {
 	router.get('/', indexCon.index);
+
+	router.get('/whoAmI', whoAmI.dealGet);
 
 	router.get(articalRegExp, artical.articalGet);
 
