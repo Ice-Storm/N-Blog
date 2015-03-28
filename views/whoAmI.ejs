@@ -9,46 +9,26 @@
                      
 <body>
 	<div class = 'body'>
-		<div class = 'header'>
-			<div class = 'logo-area'>
-				<div class = 'logo-font'>
-					<span>清源</span>
-					<div class = 'logo-small-font'>
-						<span>以大多数人的努力程度之底 更不轮不到拼天赋</span>
-					</div>
-				</div>
-			</div>
-
-			<div class = 'menu-top'>
-				<ul class = 'menu-list'>
-					<li>
-						<span>Artical</span>
-						<span class = 'menu-draw'></span>
-					</li>
-					<li style = 'color: blue'>Who am I</li>
-					<li>Tell me</li>
-				</ul>
-			</div>
-		</div>
+		<% include indexHeader.html %>
 
 		<div class = 'about'>
 			<div>
 				<p class = 'about-title'>Just about me</p>
 				<div class = 'about-content'>
-					关于博主赵强（zhaoqiang.org），本人简单做下自我介绍：“我是一个互联网新人，但是却对于网络有着无比的热情。正是靠着这股热情，于2012年8月份开通了自己的个人独立博客。”
-
-					此博客之所以以自己的名字拼音“zhaoqiang”为域名，目的很单纯：因为本人记性差，所以就图一个简单易记，并且希望借“赵强的博客”能够更好地交朋友，共同分享所见所闻。曾经的我是一个不谙世事的少年，随着年龄的增长，现今的我慢慢学会了思考，或许这就是个人成熟的蜕变吧！
-
-					声明：
-
-					赵强在这里要强调的是：我并非一个互联网高手，而是一个不折不扣的“菜鸟”。只是对文字有着特俗的追求，于是便“固执”地准备以文字的形式，把自己对生活的态度展现出来，这便是我开独立博客的初衷。
+					<%- data.words[0].content %>
 				</div>
 				<div class = 'about-me'>
 					<p class = 'about-me-title'>Contact me</p>
 					<div class = 'about-me-info'>
-						<p>Email: wcwz020140@163.com</p>
+						<p>
+							<img src = '/uploadimg/email.png' class = 'about-me-info-img'>
+							<%= data.personInfo[0].email %>
+						</p>
 						<br />
-						<p>QQ: 523003801</p>
+						<p>
+							<img src = '/uploadimg/qq.png' class = 'about-me-info-img'>
+							<%= data.personInfo[0].qq %>
+						</p>
 					</div>
 				</div>
 			</div>
@@ -57,13 +37,9 @@
 		<div class = 'right-bar'>
 			<p class = 'about-me-title'>推荐文章</p>
 			<ul class = 'right-bar-list'>
-				<li>Node.js高级编程</li>
-				<li>Node.js实战</li>
-				<li>Node.js高级编程</li>
-				<li>Node.js实战</li>
-				<li>Node.js高级编程</li>
-				<li>Node.js实战</li>
-				<li>Node.js开发指南</li>
+				<% for (var i = 0; i < data.pubArtical.length; i++) { %>
+					<li><%= data.pubArtical[i].title %></li>
+				<% } %>
 			</ul>
 		</div>
 

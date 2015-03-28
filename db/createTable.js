@@ -16,7 +16,6 @@ var comment = 'create table Nblog_comment (' +
 'time timestamp not null default NOW(), ' +
 'author char(15) not null default "",' + 
 'email char(22) not null default "",' +
-'to int not null default 0,' +  //谁回复谁
 'foreign_p bigint not null default 0,' +
 'replay_p int not null default 0' + // 子回复 
 ') engine innoDB charset utf8' 
@@ -30,13 +29,14 @@ var admin = 'create table Nblog_admin (' +
 'ip char(15) not null default "",' +
 'time timestamp not null default NOW(),' + 
 'email char(22) not null default "",' +
+'qq int not null default 0,' +
 'answer_one char(6) not null default"",' +
 'answer_two char(6) not null default"",' +
 'answer_three char(6) not null default""' +
 ') engine innoDB charset utf8' 
 
 var img = 'create table Nblog_img (' +
-'id int primary key not null auto_increment,' +
+'id int primary key not null a uto_increment,' +
 'img_name char(17) not null default "",' +
 'foreign_p bigint not null default 0' + 
 ') engine innoDB charset utf8'
@@ -80,7 +80,18 @@ var rightMenuList = 'create table Nblog_left_menu_list (' +
 'list_name char(10) unique not null default""' +
 ') engine innoDB charset utf8'
 
+var words = 'create table Nblog_words (' +
+'id int primary key not null auto_increment,' +// id = 1 的时候是 whoami 页面
+'content text, ' +                           // id = 2 的时候是 tellMe 页面
+') engine innoDB charset utf8'
 
+var wordsComment = 'create table Nblog_words_comment (' +
+'id int primary key not null auto_increment,' + 
+'content varchar(500) not null default "", ' +  
+'time timestamp not null default NOW(), ' +
+'author char(15) not null default "",' + 
+'email char(22) not null default ""' +
+') engine innoDB charset utf8'
 
 
 
@@ -97,3 +108,7 @@ module.exports.img = img;
 module.exports.fun = fun;
 
 module.exports.tag = tag;
+
+module.exports.words = words;
+
+module.exports.wordsComment = wordsComment;

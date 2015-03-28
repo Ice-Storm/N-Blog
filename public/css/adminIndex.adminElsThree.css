@@ -1,0 +1,108 @@
+.button {
+	width: 60px;
+	height: 24px;
+	background-color: #fff;
+	border:1px solid black;
+	margin-left: 2%;
+	margin-bottom: 20px;
+}
+
+.content {
+	float: right;
+	width: 84%;
+	height: 550px;
+	background-color: #DDEEF2;
+}
+
+.content-sort {
+	width: 98%;
+	height: 35px;
+	background-color: #F4FAFB;
+	margin-left: 1%;
+	margin-top: 10px;
+	border: 1px solid #80BDCB;
+}
+
+.content-sort-change {
+	float: left;
+	margin-top: 8px;
+	margin-left: 2%;
+	font-weight: bold;
+}
+
+.content-publish {
+	height: 25px;
+	width: 8%;
+	margin-top: 5px;
+	margin-left: 88%;
+	position: relative;
+	background-color: #278296;
+	border-radius: 3px;
+}
+
+.content-publish span{
+	display:block;
+	padding-top: 3px;
+	padding-left: 15px;
+	color: #fff;
+}
+
+.about-me-content {
+	width: 98%;
+	margin-top: 30px;
+	margin-left: 1%;
+	float: left;
+}
+
+.about-me-show {
+	width: 70%;
+	margin-left: 15%;
+	border: 1px solid black;
+	border-radius: 5px;
+}
+
+.about-me-show-title {
+	font-size: 24px;
+	margin: 20px;
+}
+
+.about-me-show-content {
+	padding-right: 20px;
+	padding-left: 20px;
+	margin-top: 30px;
+	padding-bottom: 30px;
+}
+
+.about-me-title {
+	margin-left: 150px;
+	width: 160px;
+	height: 20px;
+	padding-left: 5px;
+	padding-right: 5px;
+	margin-bottom: 20px; 
+}
+
+.about-me-editor {
+	padding-left: 15%;
+	height: 300px;
+	margin-bottom: 20px;
+	margin-left: 30px;
+	width: 200px;
+}
+
+.form-submit {
+	margin-top: 20px;
+	margin-left: 38%;
+}
+
+.form-title {
+	margin-left: 3%;
+	font-size: 16px;
+	margin-top: 10px;
+	margin-bottom: 10px;
+}
+
+.form-title input {
+	padding-left: 1%;
+	height: 18px;
+}

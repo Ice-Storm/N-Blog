@@ -9,13 +9,6 @@ body {
 	float: left;
 }
 
-.input {
-	width: 240px;
-	height: 21px;
-	padding-left: 8px;
-	padding-right: 8px;
-}
-
 .submit {
 	width: 80px;
 	height: 29px;
@@ -25,14 +18,6 @@ body {
 	margin-bottom: 15px;
 	cursor: pointer;
 	border-radius: 4px;
-}
-
-.division-line {
-	width: 90%;
-	height: 2px;
-	background-color: #E5E5E5;
-	margin-top: 65px;
-	margin-left: 5%;
 }
 
 .header {
@@ -95,77 +80,106 @@ body {
 	margin-top: 6%;
 }
 
-.content {
-	width: 100%;
-	float: left;
-}
-
-.content-artical {
-	width: 70%;
-}
-
-.content-artical-artical {
-	width: 85%;
-	margin-left: 15%;
-	border-radius: 5px;
+.about {
+	width: 60%;
+	margin-left: 10%;
 	border: 1px solid black;
+	border-radius: 5px;
 	float: left;
 }
 
-.content-artical-header {
+.about-title {
+	font-size: 24px;
 	margin-top: 25px;
-	padding-left: 5%;
-}
-
-.content-artical-header-title {
-	font-size: 25px;
-	font-weight: bold;
-}
-
-.content-artical-header-meg {
-	font-size: 16px;
-	margin-top: 15px;
-	display: block;
-}
-
-.content-artical-content {
-	margin-top: 15px;
-	margin-bottom: 15px;
-	padding-left: 5%;
-	padding-right: 5%;
-	overflow: hidden;
-}
-
-.content-artical-public {
-	width: 90%;
-	margin-top: 45px;
-	margin-bottom: 45px;
 	margin-left: 5%;
 }
 
-.content-artical-public-content {
+.about-content {
+	margin-top: 40px;
 	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 40px;
+}
+
+.about-me {
+	margin-top: 40px;
+	margin-left: 5%;
+	margin-right: 5%;
+	margin-bottom: 40px;	
+}
+
+.about-me-title {
+	font-size: 24px;
+}
+
+.about-me-info {
+	margin-top: 20px;
+	margin-bottom: 20px;
+}
+
+.about-me-info-img {
+	margin-bottom: -5px;
+	height: 30px;
+	width: 30px;
+	padding-right: 3%;
+}
+
+.right-bar {
+	margin-right: 10%;
+	float: right;
+	width: 16%;
+}
+
+.right-bar-list {
+	margin-top: 30px;
+}
+
+.right-bar-list li {
+	margin-top: 10px;
 	font-size: 16px;
 }
 
-.content-artical-public-content li {
-	padding-top: 8px;
+.right-bar-content {
+	margin-top: 50%;
+	float: left;
+	width: 100%;
 }
 
-.content-artical-public-content a {
+.right-bar-content li {
+	margin-top: 15px;
+}
+
+.right-bar-content a {
 	color: #0090D3;
-	text-decoration: none;
-	
 }
 
-.content-artical-public-content a:hover {
+.right-bar-content span {
+	color: gray;
+}
+
+.right-bar-content a:hover {
+	text-decoration: none;
 	border-bottom: 2px dotted blue;
 }
 
-.content-artical-public-title {
+.right-bar-content-title {
 	font-size: 24px;
 	font-weight: bold;
+}
 
+.right-bar-fun {
+	margin-top: 50px;
+
+}
+
+.right-bar-content-fun li {
+	float: left;
+	width: 50%;
+	font-size: 15px;
+}
+
+.right-bar-content-fun a {
+	color: black;
 }
 
 .content-artical-replay {
@@ -235,33 +249,6 @@ body {
 	color: blue;
 }
 
-.content-artical-replay-ch {
-	width: 90%;
-	margin-left: 5%;
-}
-
-.content-artical-replay-ch-title {
-	font-size: 22px;
-	font-weight: bold;
-	margin-left: 9%;
-	margin-top: 10px;
-}
-
-.content-artical-replay-ch-content {
-	margin-left: 19%;
-	position: relative;
-	top: -70px;
-	margin-right: 7%;
-	border: 1px solid gray;
-	border-radius: 5px;
-}
-
-.content-artical-replay-content-ch-time {
-	float: right;
-	padding-right: 8%;
-	margin-top: -17px;
-}
-
 .content-artical-comment {
 	width: 100%;
 	margin-top: 30px;
@@ -295,81 +282,6 @@ body {
 	font-size: 14px;
 }
 
-.right-bar {
-	margin-right: 11%;
-	float: right;
-	width: 16%;
-}
-
-.right-bar-img {
-	width: 100%;
-	height: 180px;
-	background-color: #fff;
-}
-
-.right-bar-img-border {
-	width: 100%;
-	height: 100%;
-	border: 2px solid #EEEEEE;
-	position: relative;
-}
-
-.right-bar-img-size {
-	width: 96%;
-	height: 96%;
-	margin-left: 2%;
-	margin-top: 5px;
-}
-
-.right-bar-img-introduce {
-	font-size: 20px;
-	padding-left: 17%;
-	padding-top: 10%;
-}
-
-.right-bar-content {
-	margin-top: 50%;
-	float: left;
-	width: 100%;
-}
-
-.right-bar-content li {
-	margin-top: 15px;
-}
-
-.right-bar-content a {
-	color: #0090D3;
-}
-
-.right-bar-content span {
-	color: gray;
-}
-
-.right-bar-content a:hover {
-	text-decoration: none;
-	border-bottom: 2px dotted blue;
-}
-
-.right-bar-content-title {
-	font-size: 24px;
-	font-weight: bold;
-}
-
-.right-bar-fun {
-	margin-top: 50px;
-
-}
-
-.right-bar-content-fun li {
-	float: left;
-	width: 50%;
-	font-size: 15px;
-}
-
-.right-bar-content-fun a {
-	color: black;
-}
-
 .footer {
 	float: left;
 	width: 100%;
@@ -399,3 +311,9 @@ body {
 .footer-font a {
 	color: blue;
 }
+
+
+
+
+
+

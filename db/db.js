@@ -19,17 +19,11 @@ var judgeObjLen = function (obj) {
 		throw 'insert parameter type err';
 	}
 
-	var count = 0;
-
 	for (i in obj) {
-		count++;
+		return 1
 	}
 
-	if (count) {
-		return 1;
-	} else {
-		return 0;
-	}
+	return 0;
 }
 
 var insert = function (valueCol, cb) {
@@ -273,6 +267,8 @@ var update = function (valueCol, cb) {
 
 	sql = 'UPDATE ' + valueCol.table + ' SET ' + updateStr + ' WHERE ' + condition;
 
+
+	console.log(sql)
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');
 		conn.query(sql, function (err) {

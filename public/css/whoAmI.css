@@ -106,6 +106,13 @@ body {
 	margin-bottom: 20px;
 }
 
+.about-me-info-img {
+	margin-bottom: -5px;
+	height: 30px;
+	width: 30px;
+	padding-right: 3%;
+}
+
 .right-bar {
 	margin-right: 10%;
 	float: right;

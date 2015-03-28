@@ -4,6 +4,12 @@ var db = require('../db/db.js');
 
 
 var dealGet = function (req, res) {
+
+	if (!req.session.isAdmin) {
+		// 未登录管理员 或者 超时
+		return res.redirect('/login');
+	} 
+
 	var indexData = {};
 
 	async.waterfall([
@@ -65,6 +71,11 @@ var dealGet = function (req, res) {
 }
 
 var dealPost = function (req, res) {
+
+	if (!req.session.isAdmin) {
+		// 未登录管理员 或者 超时
+		return res.redirect('/login');
+	} 
 
 	if (req.body.blogName) {
 		var arr = [];

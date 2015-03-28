@@ -1,4 +1,10 @@
 <% include adminHeader.html %>
+		<div class = 'content-sort'>
+			<div class = 'content-sort-change'>-->  Index 页面设置</div>
+			<div class = 'content-publish'>
+				<a href = '/admin/adminIndex/content/addArtical'><span>添加文章</span></a>
+			</div>
+		</div>
 		<div class = 'content-content'>
 			<ul class = 'content-title'>
 				<li>
@@ -28,6 +34,12 @@
 					<li><span><%= info[i].flag %></span></li>
 					<li><span><%= info[i].ip %></span></li>
 					<li><span><%= info[i].time %></span></li>
+					<li>
+						<a href = '/admin/adminIndex/dealRightMenuList/art/1/?delete=true&id='>
+							<img src = '/uploadImg/delete.png' class = 'img-ico'>
+						</a>
+						<img src = '/uploadImg/editor.png' class = 'img-ico' data-img = 'upload' data-id = '' data-flag = ''>
+					</li>
 				<% } %>
 			</ul>
 		</div>

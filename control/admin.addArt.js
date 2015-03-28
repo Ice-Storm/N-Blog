@@ -15,6 +15,12 @@ var async = require('async');
 var config = require('../config.default.js');
 
 var dealGet = function (req, res) {
+
+	if (!req.session.isAdmin) {
+		// 未登录管理员 或者 超时
+		return res.redirect('/login');
+	} 
+
 	req.session.articalID = new Date().getTime();
 
 	res.render('adminAddArt', {
@@ -24,6 +30,11 @@ var dealGet = function (req, res) {
 }
 
 var dealPost = function (req, res) {
+
+	if (!req.session.isAdmin) {
+		// 未登录管理员 或者 超时
+		return res.redirect('/login');
+	} 
 
 	var param = URL.parse(req.url, true).query.dir;
 

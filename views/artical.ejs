@@ -10,27 +10,7 @@
                      
 <body>
 	<div class = 'body'>
-		<div class = 'header'>
-			<div class = 'logo-area'>
-				<div class = 'logo-font'>
-					<span><%= data.config[0].blog_name %></span>
-					<div class = 'logo-small-font'>
-						<span><%= data.config[0].blog_sign %></span>
-					</div>
-				</div>
-			</div>
-
-			<div class = 'menu-top'>
-				<ul class = 'menu-list'>
-					<li>
-						<span><%= data.menu[0].menu_name %></span>
-						<span class = 'menu-draw'></span>
-					</li>
-					<li><%= data.menu[1].menu_name %></li>
-					<li><%= data.menu[2].menu_name %></li>
-				</ul>
-			</div>
-		</div>
+		<% include indexHeader.html %>
 
 		<div class = 'content'>
 			<div class = 'content-artical'>
@@ -44,7 +24,7 @@
 						</div>
 					</div>
 					<div class = 'content-artical-content'>
-						<%= data.artical[0].content %>
+						<%- data.artical[0].content %>
 					</div>
 
 					<div class = 'content-artical-public'>

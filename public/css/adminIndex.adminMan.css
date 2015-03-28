@@ -100,3 +100,8 @@
 	width: 14%;
 }
 
+.img-ico {
+	margin-left: 20px;
+	width: 20px;
+	cursor: pointer;
+}

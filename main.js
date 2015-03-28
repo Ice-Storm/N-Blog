@@ -14,7 +14,7 @@ var route = require('./route/routes.js');
 
 var config = require('./config.default.js');
 
-var auth = require('./middlewares/auth.js');
+var middlewares = require('./middlewares/auth.js');
 
 
 /*
@@ -36,6 +36,10 @@ var auth = require('./middlewares/auth.js');
  app.use(session({
 	secret: config.sessionSecret
  }));
+
+// session超时登出
+
+ app.use(middlewares.freshSession)
  
  app.use(express.static(path.join(__dirname, 'public')));
 
@@ -49,7 +53,7 @@ var auth = require('./middlewares/auth.js');
 	next();
 })*/
 
-app.use(auth.authAdmin);
+//app.use(auth.authAdmin);
 
  
  var router = express.Router();

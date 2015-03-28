@@ -5,7 +5,18 @@ var util = require('../util/util.js');
 var db = require('../db/db.js');
 
 
-var dealGet = function (req, res) {
+var dealGet = function (req, res, next) {
+
+	if (!req.session.isAdmin) {
+		// 未登录管理员 或者 超时
+		return res.redirect('/login');
+	} 
+
+	//middlewares.freshSession(req, res, next);
+	console.log('--------------')
+	console.log(req.session)
+	console.log('--------------')
+	
 	var urlInfo = util.urlparse(req.url);
 	var memory = {};
 	async.waterfall([
