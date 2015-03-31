@@ -6,7 +6,7 @@ var middlewares = require('../middlewares/auth.js');
 var dataObj = {
 	seluserObj: {
 		table: 'nblog_admin',
-		field: ['user', 'password'],
+		field: ['id', 'user', 'password', 'flag'],
 		condition: {
 			// user
 			// password
@@ -37,8 +37,11 @@ var dealPost = function (req, res, next) {
 
 			req.session.user = data[0].user;
 
-
 			req.session.isAdmin = true;
+
+			req.session.status = data[0].flag;
+
+			req.session.adminId = data[0].id;
 			
 			res.redirect('/admin/adminIndex/dealRightMenuList/man/1/');
 		} else {

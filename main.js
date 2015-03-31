@@ -16,6 +16,8 @@ var config = require('./config.default.js');
 
 var middlewares = require('./middlewares/auth.js');
 
+var log4js = require('log4js');
+
 
 /*
  * config
@@ -36,6 +38,15 @@ var middlewares = require('./middlewares/auth.js');
  app.use(session({
 	secret: config.sessionSecret
  }));
+
+
+log4js.configure(config.log4js);
+
+
+var logger = log4js.getLogger('normal');
+logger.setLevel(config.log4jsLeave);
+
+app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}));
 
 // session超时登出
 

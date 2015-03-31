@@ -46,6 +46,8 @@ module.exports = function (router) {
 
 	router.get(/admin\/adminIndex\/dealRightMenuList\/man\/\w+/, adminMan.dealGet);
 
+	router.post(/admin\/adminIndex\/dealRightMenuList\/man\/\w+/, adminMan.dealPost);
+
 	router.get('/admin/adminIndex/dealRightMenuList/status', adminSta.dealGet);
 
 	router.get(/admin\/adminIndex\/dealRightMenuList\/art\/\w+/, adminArt.dealGet);

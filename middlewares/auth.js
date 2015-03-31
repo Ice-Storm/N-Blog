@@ -6,7 +6,6 @@ exports.freshSession = function (req, res, next) {
 		req.session.cookie.maxAge = EXPIRES;
 		next();
 	} else {
-		console.log('Admin  Session 过期 ！！！！！！！！！！！-');
 		next();
 	}
 }
