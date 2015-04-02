@@ -136,6 +136,11 @@ body {
 	overflow: hidden;
 }
 
+.content-artical-content img{
+	max-width: 100%;
+}
+
+
 .content-artical-public {
 	width: 90%;
 	margin-top: 45px;

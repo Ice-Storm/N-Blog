@@ -2,6 +2,7 @@ var config = {
 
 	listenerPort: 3000,
 	sessionSecret: 'test',
+	urlSecret: 'test',
 
 	//mysql default config
 	mysql: {

@@ -63,23 +63,23 @@
 										回复
 									</p>
 
-									<% while (data.comment[i].rep.length > 0){ %>
-										<% data.comment[i] = data.comment[i].rep[0][0] %>
-										<div class = 'content-artical-replay-ch'>
-											<img src = '/uploadImg/1.jpg' class ='content-artical-replay-img'>
-											<p>&nbsp;Reply</p>
-											<div class = 'content-artical-replay-ch-content'>
-												<p class = 'content-artical-replay-ch-title'><%= data.comment[i].author %></p>
-												<p class = 'content-artical-replay-content-ch-time'>
-													<%= data.comment[i].time %>
-												</p>
-												<p class = 'content-artical-replay-content-content'><%= data.comment[i].content %>
-												</p>
-												<p class = 'content-artical-replay-replay' id = '<%= data.comment[i].id %>'>回复</p>
+									<% if (data.comment[i].rep){ %>
+										<% while (data.comment[i].rep.length > 0){ %>
+											<% data.comment[i] = data.comment[i].rep[0][0] %>
+											<div class = 'content-artical-replay-ch'>
+												<img src = '/uploadImg/1.jpg' class ='content-artical-replay-img'>
+												<p>&nbsp;Reply</p>
+												<div class = 'content-artical-replay-ch-content'>
+													<p class = 'content-artical-replay-ch-title'><%= data.comment[i].author %></p>
+													<p class = 'content-artical-replay-content-ch-time'>
+														<%= data.comment[i].time %>
+													</p>
+													<p class = 'content-artical-replay-content-content'><%= data.comment[i].content %>
+													</p>
+													<p class = 'content-artical-replay-replay' id = '<%= data.comment[i].id %>'>回复</p>
+												</div>
 											</div>
-										</div>
-
-										
+										<% } %>
 									<% } %>
 								</div>
 							</div>		
@@ -129,9 +129,11 @@
 
 					<ul>
 						<% for (var i = 0; i < data.recentlyReplay.length; i++){ %>
-						<li>
-							<span><%= data.recentlyReplay[i].author %></span> 发表在《<a href = '#'><%= data.recentlyReplay[i].title %></a>》
-						</li>
+							<% if (data.recentlyReplay[i].title){ %>
+								<li>
+									<span><%= data.recentlyReplay[i].author %></span> 发表在《<a href = '#'><%= data.recentlyReplay[i].title %></a>》
+								</li>
+								<% } %>
 						<% } %>
 					</ul>
 

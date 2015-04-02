@@ -1,7 +1,7 @@
 var async = require('async');
 var fs = require('fs');
 var path = require('path');
-var util = require('../util/util.js');
+var util = require('../common/util');
 var db = require('../db/db.js');
 
 

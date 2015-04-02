@@ -1,5 +1,5 @@
 var async = require('async');
-var util = require('../util/util.js');
+var util = require('../common/util');
 var db = require('../db/db.js');
 
 

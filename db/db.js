@@ -185,8 +185,6 @@ var getData = function (valueCol, cb) {
 		throw 'SQL Error'
 	}
 
-	console.log(sql)
-
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');
 		conn.query(sql, function (err, data) {
@@ -303,7 +301,6 @@ var getResultCount = function (valueCol, cb) {
 		sql += ' WHERE ' + condition;
 	}
 
-	console.log(sql);
 
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');

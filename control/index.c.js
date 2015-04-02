@@ -2,6 +2,8 @@ var async = require('async');
 
 var db = require('../db/db.js');
 
+var util = require('../common/util');
+
 //首页查询数据
 
 var dataObj = {
@@ -205,17 +207,9 @@ var index = function (req, res) {
 
 			result.artical[i].comCount = result.commCount[i][0].count;
 
-			var t; 
+			//格式化时间
 
-			var articalTime = result.artical[i].time.toString();
-
-			if (articalTime.length == 10) {
-				t = new Date(result.artical[i].time * 1000);
-			} else {
-				t = new Date(result.artical[i].time);
-			}
-
-			result.artical[i].time = t.getFullYear() + '-' + eval(t.getMonth() + 1) + '-' + t.getDate();
+			result.artical[i].time = util.dateFormat(result.artical[i].time * 1000);
 		}
 
 		delete result.commCount;
@@ -223,6 +217,8 @@ var index = function (req, res) {
 		delete result.articalImg;
 
 		delete result.flag;
+
+		console.log(result);
 
 		res.render('index', {
 			data: result

@@ -1,7 +1,8 @@
-var util = require('../util/util.js');
 var async = require('async');
 var db = require('../db/db.js');
 var URL = require('url');
+var util = require('../common/util');
+
 
 var dataObj = {
 
@@ -130,35 +131,47 @@ var articalGet = function (req, res) {
 				db.getData(dataObj.selRecentlyReplay, cb);
 			},
 			commentCount:['artical' ,function (cb, result) {
-				dataObj.countObj.condition.foreign_p = result.artical[0].com_p;
-				db.getResultCount(dataObj.countObj, cb);
+				if (result.artical[0].com_p) {
+					dataObj.countObj.condition.foreign_p = result.artical[0].com_p;
+					db.getResultCount(dataObj.countObj, cb);
+				} else {
+					cb(null, 1);
+				}
 			}],
 			comment: ['artical', function (cb, result) {
-				dataObj.selCommObj.condition.foreign_p = result.artical[0].com_p;
-				db.getData(dataObj.selCommObj, cb);
+				if (result.artical[0].com_p) {
+					dataObj.selCommObj.condition.foreign_p = result.artical[0].com_p;
+					db.getData(dataObj.selCommObj, cb);
+				} else {
+					cb(null, 1);
+				}
 			}],
 			recentlyReplayTitle: ['recentlyReplay', function (cb, result) {
+
+				// 静态链表，查找评论和子评论
 				async.map(result.recentlyReplay, function (item, callback) {
 					dataObj.selRecentlyRepTit.condition.com_p = item.foreign_p;
 					delete item.foreign_p;
 					db.getData(dataObj.selRecentlyRepTit, callback)
 				}, function (err, data) {
+					console.log(data);
 					cb (err, data);
 				})
 			}]
 		}, function (err, result) {
-			//时间转换应该写个通用函数重构
-
+			console.log(result)
 
 			req.session.com_p = result.artical[0].com_p;
 			// 合并结果集
 			for (var i = 0; i < result.recentlyReplayTitle.length; i++) {
-				result.recentlyReplayTitle[i] = result.recentlyReplayTitle[i][0];
-				result.recentlyReplay[i].title = result.recentlyReplayTitle[i].title;
+				if (result.recentlyReplayTitle[i][0]) {
+					result.recentlyReplayTitle[i] = result.recentlyReplayTitle[i][0];
+					result.recentlyReplay[i].title = result.recentlyReplayTitle[i].title;
+				}
 			}
 
 			delete result.recentlyReplayTitle;
-
+console.log(result)
 			result.artical[0].count = result.commentCount[0].count;
 
 			delete result.commentCount;
@@ -166,19 +179,12 @@ var articalGet = function (req, res) {
 			delete result.artical[0].com_p;
 
 			for (var i = 0; i < result.comment.length; i++) {
-				var t;
+				
+				result.comment[i].time = util.dateFormat(result.comment[i].time);
 
-				var commentTime = result.comment[i].time.toString();
-
-				if (commentTime.length == 10) {
-					t = new Date(result.comment[i].time * 1000);
-				} else {
-					t = new Date(result.comment[i].time);
-				}
-
+				// 保存子评论
 				result.comment[i].rep = [];
-				var time = t.getFullYear() + '-' + eval(t.getMonth() + 1) + '-' + t.getDate() + '  ' + t.getHours() + ':' + t.getMinutes();
-				result.comment[i].time = time;
+
 				for (var j = 0; j < result.comment.length; j++) {
 					if (result.comment[i].id == result.comment[j].replay_p) {
 						result.comment[i].rep.push(result.comment.slice(j, j + 1));
@@ -187,37 +193,12 @@ var articalGet = function (req, res) {
 				}
 			}
 
-			var t;
-
-			var articalTime = result.artical[0].time.toString();
-
-			if (articalTime.length == 10) {
-				t = new Date(result.artical[0].time * 1000);
-			} else {
-				t = new Date(result.artical[0].time);
-			}
-
-
-
-			result.artical[0].time = t.getFullYear() + '-' + eval(t.getMonth() + 1) + '-' + t.getDate();
-
-			
-
 			for (var i = 0; i < result.pubArtical.length; i++) {
-				var t;
+			
+				result.pubArtical[i].time = util.dateFormat(result.pubArtical[i].time);
 
-				var pubArticalTime = result.pubArtical[i].time.toString();
-
-				if (pubArticalTime.length == 10) {
-					t = new Date(result.pubArtical[i].time * 1000);
-				} else {
-					t = new Date(result.pubArtical[i].time);
-				}
-
-				var time = t.getFullYear() + '-' + eval(t.getMonth() + 1) + '-' + t.getDate();
-				result.pubArtical[i].time = time;
-				
 			}
+			result.artical[0].time = util.dateFormat(result.artical[0].time);
 
 			res.render('artical', {
 				data: result

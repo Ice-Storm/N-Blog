@@ -43,10 +43,10 @@ var log4js = require('log4js');
 log4js.configure(config.log4js);
 
 
-var logger = log4js.getLogger('normal');
+/*var logger = log4js.getLogger('normal');
 logger.setLevel(config.log4jsLeave);
 
-app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}));
+app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}));*/
 
 // session超时登出
 
