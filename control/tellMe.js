@@ -41,7 +41,7 @@ var dataObj = {
 
 	selPubArticalObj: {
 		table: 'nblog_artical',
-		field: ['title'],
+		field: ['title', 'time'],
 		condition: {
 			1:1,
 			skip: 1,
@@ -101,10 +101,22 @@ var dealGet = function (req, res) {
 	}, function (err, result) {
 		
 		for (var i = 0; i < result.recentlyReplayTitle.length; i++) {
-			result.recentlyReplayTitle[i] = result.recentlyReplayTitle[i][0];
-			result.recentlyReplay[i].title = result.recentlyReplayTitle[i].title;
+			if (result.recentlyReplayTitle[i][0]) {
+				result.recentlyReplayTitle[i] = result.recentlyReplayTitle[i][0];
+				result.recentlyReplay[i].title = result.recentlyReplayTitle[i].title;
+				result.recentlyReplay[i].time =  util.dateFormat(result.recentlyReplayTitle[i].time);
+			}
 		}
-		console.log(result);
+
+		for (var i = 0; i < result.pubArtical.length; i++) {
+			if (result.pubArtical[i]) {
+				result.pubArtical[i].time =  util.dateFormat(result.pubArtical[i].time);
+			}
+		}
+
+		delete result.recentlyReplayTitle;
+
+		console.log(result)
 		res.render('tellMe', {
 			data: result
 		});

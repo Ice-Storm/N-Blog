@@ -19,7 +19,7 @@ var dataObj = {
 
 	selPubArticalObj: {
 		table: 'nblog_artical',
-		field: ['title'],
+		field: ['title', 'time'],
 		condition: {
 			1:1,
 			skip: 1,
@@ -67,7 +67,13 @@ var dealGet = function (req, res) {
 			db.getData(dataObj.selPersonInfo, cb);
 		}
 	}, function (err, result) {
-		console.log(result);
+		
+		for (var i = 0; i < result.pubArtical.length; i++) {
+			result.pubArtical[i].time = util.dateFormat(result.pubArtical[i].time);
+		}
+
+		console.log(result)
+
 		res.render('whoAmI', {
 			data: result
 		});

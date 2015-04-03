@@ -5,6 +5,7 @@
 	<meta charset="utf-8">
 	<script src = 'javascript/require.js' data-main = '/javascript/index/index.main'></script>
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/ini.css'>
+	<link rel = 'stylesheet' type = 'text/css' href = '/css/indexCom.css'>
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/index.css'>
 </head>
 
@@ -58,27 +59,30 @@
 
 		<div>
 
-		<div class = 'right-col'>
-			 <div>
-			 	<div class = 'right-col-img'>
-			 		<div class = 'right-col-img-border'>
-			 			<img src = 'uploadImg/<%= data.config[0].blog_right_img %>' class = 'right-col-img-size'>
+		<div class = 'right-bar'>
+			
+
+
+			 	<div class = 'right-bar-img'>
+			 		<div class = 'right-bar-img-border'>
+			 			<img src = 'uploadImg/<%= data.config[0].blog_right_img %>' class = 'right-bar-img-size'>
 			 		</div>
-			 		<div class = 'right-col-img-tag'>
-			 			<div class = 'right-col-img-tag-font-title'>标签</div>
+			 		<div class = 'right-bar-img-tag'>
+			 			<div class = 'right-bar-img-tag-font-title'>标签</div>
 
 			 			<% for (i = 0; i < data.tag.length; i++){ %>
 			 				<% if (data.tag[i].tag_name){ %>
-			 					<div  class = 'right-col-img-tag-tag'>
-					 				<span class = 'right-col-img-tag-font'><%= data.tag[i].tag_name %></span>
+			 					<div  class = 'right-bar-img-tag-tag'>
+					 				<span class = 'right-bar-img-tag-font'><%= data.tag[i].tag_name %></span>
 					 			</div>
 			 				<% } %>
 			 			<% } %>
 			 		</div>
 			 	</div>
 
-				<div class = 'right-col-content'>
-					<span class = 'right-col-title'>归档</span>
+
+				<div class = 'right-bar-content'>
+					<span class = 'right-bar-title'>归档</span>
 					<ul>
 						<li> 2015年一月</li>
 						<li> 2015年一月</li>
@@ -92,33 +96,41 @@
 						<li> 2015年一月</li>
 						<li> 2015年一月</li>
 					</ul>
-				</div> 
+				
 
-				<div class = 'right-col-content'>
+				<!-- <div class = 'right-col-content'>
 					<span class = 'right-col-title'>功能</span>
 					<ul class = 'right-col-content-util'>
-						<li>> 登录</li>
-						<li>> Github</li>
+						
+						<li>
+							<a href = '<%= data.config[0].blog_address %>'>> 登录</a>
+						</li>
+						
+						<li>
+							<a href = '<%= data.config[0].blog_github %>'>> Github</a>
+						</li>
+						
 					</ul>
+				</div> -->
+					<div class = 'right-bar-fun'>
+						<p class = 'right-bar-content-title'>功能</p>
+						<ul class = 'right-bar-content-fun'>
+							<li>
+								<a href = '<%= data.config[0].blog_address %>'>> 登录</a>
+							</li>
+							<li>
+								<a href = '<%= data.config[0].blog_github %>'>> Github</a>
+							</li>
+						</ul>
+					</div>
 				</div> 
-			</div>
+
+
 		</div>
 
 
 
-		<div class = 'footer'>
-			<div>
-	 			<div class = 'footer-line'></div>
-	 			<div class = 'footer-font'>
-	 				<ul>
-	 					<li>
-	 						<a href= '<%= data.config[0].blog_address %>'>源码地址</a>
-	 					</li>
-	 					<li><%= data.config[0].blog_rights %></li>
-	 				</ul>
-	 			</div>
-			</div>
-		</div>
+		<% include indexComFooter.html %>
 
 		</div>
 	</div>

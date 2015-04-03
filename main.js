@@ -27,8 +27,11 @@ var log4js = require('log4js');
  
  app.set('views', path.join(__dirname, 'views'));
  
- app.set('view engine', 'ejs');
- 
+ app.set('view engine', 'html');
+
+ app.engine('html', require('ejs').__express);
+
+
  app.use(logger('dev'));
  
  app.use(bodyParser());
@@ -36,7 +39,7 @@ var log4js = require('log4js');
  app.use(cookieParser());
  
  app.use(session({
-	secret: config.sessionSecret
+    secret: config.sessionSecret
  }));
 
 
@@ -53,19 +56,6 @@ app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}));*/
  app.use(middlewares.freshSession)
  
  app.use(express.static(path.join(__dirname, 'public')));
-
-/*app.use(function (req, res, next) {
-	//req.session.cookie._expires = 1000;
-	req.session.test = 'test';
-	res.cookie('name', {iteams:{a: 'hh',b : 's', c: 'ds'}}, {maxAge: 1111111});
-	res.cookie('n', '<script>alert(1)</script>', {maxAge: 1111111});
-	console.log(req.session)
-	console.log(req.cookies.name.iteams);
-	next();
-})*/
-
-//app.use(auth.authAdmin);
-
  
  var router = express.Router();
  

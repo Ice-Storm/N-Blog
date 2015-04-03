@@ -4,6 +4,7 @@
 	<title></title>
 	<meta charset="utf-8">
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/ini.css'>
+	<link rel = 'stylesheet' type = 'text/css' href = '/css/indexCom.css'>
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/whoAmI.css'>	
 </head>
                      
@@ -35,29 +36,15 @@
 		</div>
 
 		<div class = 'right-bar'>
-			<p class = 'about-me-title'>推荐文章</p>
-			<ul class = 'right-bar-list'>
-				<% for (var i = 0; i < data.pubArtical.length; i++) { %>
-					<li><%= data.pubArtical[i].title %></li>
-				<% } %>
-			</ul>
+
+			<% include indexComPubArtical.html %>
+
+
+			<% include indexComFun.html %>
+
 		</div>
 
-		<div class = 'footer'>
-			<div>
-	 			<div class = 'footer-line'></div>
-	 			<div class = 'footer-font'>
-	 				<ul>
-	 					<li>
-	 						<a href= ''>源码地址</a>
-	 					</li>
-	 					<li>
-							2015 清源的博客 —— All Rights Reserved
-						</li>
-	 				</ul>
-	 			</div>
-			</div>
-		</div>
+	<% include indexComFooter.html %>
 
 	</div>
 </body>

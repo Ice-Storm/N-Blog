@@ -4,6 +4,7 @@
 	<title></title>
 	<meta charset="utf-8">
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/ini.css'>
+	<link rel = 'stylesheet' type = 'text/css' href = '/css/indexCom.css'>
 	<link rel = 'stylesheet' type = 'text/css' href = '/css/artical.css'>
 	<script src = '/javascript/require.js' data-main = '/javascript/artical/artical.main'></script>
 </head>
@@ -28,16 +29,9 @@
 					</div>
 
 					<div class = 'content-artical-public'>
-						<p class = 'content-artical-public-title'>推荐文章</p>
-						<div class = 'content-artical-public-content'>
-							<ul>
-								<% for (var i = 0; i < data.pubArtical.length; i++) { %>
-									<li>
-										<a href = '/artical/<%= data.pubArtical[i].time %>/<%= data.pubArtical[i].title %>'><%= data.pubArtical[i].title %></a>
-									</li>
-								<% } %>
-							</ul>
-						</div>
+
+						<% include indexComPubArtical.html %>
+
 					</div>
 
 					<div class = 'division-line'></div>
@@ -90,28 +84,8 @@
 
 					<div class = 'division-line'></div>
 
-					<div class = 'content-artical-comment'>
-						<div class = 'content-artical-comment-content'>
-							<span class = 'content-artical-comment-title'>Leave a Reply</span>
-							<form action = '' method = 'POST'>
-								<a name = 'addReplay'></a>
-								<div class = 'content-artical-btn-group'>
-									<label for = 'author'>
-										Author:
-									</label> 
-									<input type = 'text' id = 'author' class = 'input' name = 'author'>
-								</div>
-								<div class = 'content-artical-btn-group'>
-									<label for = 'email'>
-										Email:  
-									</label>&nbsp;
-									<input type = 'text' id = 'email' class = 'input' name = 'email'>
-								</div>
-								<textarea class = 'content-artical-textarea' name = 'content'></textarea>
-								<input type = 'submit' value = 'submit' class = 'submit'>
-							</form>
-						</div>
-					</div>
+					<% include indexComReplay.html %>
+
 				</div>
 			</div>
 
@@ -125,47 +99,17 @@
 				</div>
 
 				<div class = 'right-bar-content'>
-					<p class = 'right-bar-content-title'>近期评论</p>
 
-					<ul>
-						<% for (var i = 0; i < data.recentlyReplay.length; i++){ %>
-							<% if (data.recentlyReplay[i].title){ %>
-								<li>
-									<span><%= data.recentlyReplay[i].author %></span> 发表在《<a href = '#'><%= data.recentlyReplay[i].title %></a>》
-								</li>
-								<% } %>
-						<% } %>
-					</ul>
+					<% include indexComRecReplay.html %>
 
-					<div class = 'right-bar-fun'>
-						<p class = 'right-bar-content-title'>功能</p>
-						<ul class = 'right-bar-content-fun'>
-							<li>
-								<a href = '<%= data.config[0].blog_address %>'>> 登录</a>
-							</li>
-							<li>
-								<a href = '<%= data.config[0].blog_github %>'>> Github</a>
-							</li>
-						</ul>
-					</div>
+					<% include indexComFun.html %>
+					
 				</div>
 
 			</div>
 		</div>
 
-		<div class = 'footer'>
-			<div>
-	 			<div class = 'footer-line'></div>
-	 			<div class = 'footer-font'>
-	 				<ul>
-	 					<li>
-	 						<a href= '<%= data.config[0].blog_address %>'>源码地址</a>
-	 					</li>
-	 					<li><%= data.config[0].blog_rights %></li>
-	 				</ul>
-	 			</div>
-			</div>
-		</div>
+		<% include indexComFooter.html %>
 
 	</div>
 </body>

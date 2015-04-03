@@ -86,7 +86,7 @@ var dataObj = {
 
 	selRecentlyRepTit: {
 		table: 'nblog_artical',
-		field: ['title'],
+		field: ['title', 'time'],
 		condition: {
 			// foreign_p
 		},
@@ -131,19 +131,19 @@ var articalGet = function (req, res) {
 				db.getData(dataObj.selRecentlyReplay, cb);
 			},
 			commentCount:['artical' ,function (cb, result) {
-				if (result.artical[0].com_p) {
+				if (result.artical[0] && result.artical[0].com_p) {
 					dataObj.countObj.condition.foreign_p = result.artical[0].com_p;
 					db.getResultCount(dataObj.countObj, cb);
 				} else {
-					cb(null, 1);
+					cb('artical not find', 1);
 				}
 			}],
 			comment: ['artical', function (cb, result) {
-				if (result.artical[0].com_p) {
+				if (result.artical[0] && result.artical[0].com_p) {
 					dataObj.selCommObj.condition.foreign_p = result.artical[0].com_p;
 					db.getData(dataObj.selCommObj, cb);
 				} else {
-					cb(null, 1);
+					cb('artical not find', 1);
 				}
 			}],
 			recentlyReplayTitle: ['recentlyReplay', function (cb, result) {
@@ -154,12 +154,13 @@ var articalGet = function (req, res) {
 					delete item.foreign_p;
 					db.getData(dataObj.selRecentlyRepTit, callback)
 				}, function (err, data) {
-					console.log(data);
 					cb (err, data);
 				})
 			}]
 		}, function (err, result) {
-			console.log(result)
+			
+			//异常处理
+			if (err) return res.send(err);
 
 			req.session.com_p = result.artical[0].com_p;
 			// 合并结果集
@@ -167,12 +168,15 @@ var articalGet = function (req, res) {
 				if (result.recentlyReplayTitle[i][0]) {
 					result.recentlyReplayTitle[i] = result.recentlyReplayTitle[i][0];
 					result.recentlyReplay[i].title = result.recentlyReplayTitle[i].title;
+					result.recentlyReplay[i].time =  util.dateFormat(result.recentlyReplayTitle[i].time);
 				}
 			}
 
-			delete result.recentlyReplayTitle;
-console.log(result)
+			result.artical[0].time = util.dateFormat(result.artical[0].time);
+
 			result.artical[0].count = result.commentCount[0].count;
+
+			delete result.recentlyReplayTitle;
 
 			delete result.commentCount;
 
@@ -198,7 +202,6 @@ console.log(result)
 				result.pubArtical[i].time = util.dateFormat(result.pubArtical[i].time);
 
 			}
-			result.artical[0].time = util.dateFormat(result.artical[0].time);
 
 			res.render('artical', {
 				data: result

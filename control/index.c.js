@@ -209,7 +209,14 @@ var index = function (req, res) {
 
 			//格式化时间
 
-			result.artical[i].time = util.dateFormat(result.artical[i].time * 1000);
+			if (result.artical[i].time.toString().length == 10) {
+				result.artical[i].time = util.dateFormat(result.artical[i].time * 1000);
+			} else {
+				result.artical[i].time = util.dateFormat(result.artical[i].time);
+			}
+			
+
+			
 		}
 
 		delete result.commCount;
@@ -217,8 +224,6 @@ var index = function (req, res) {
 		delete result.articalImg;
 
 		delete result.flag;
-
-		console.log(result);
 
 		res.render('index', {
 			data: result
