@@ -2,6 +2,7 @@ var async = require('async');
 var util = require('../common/util');
 var db = require('../db/db.js');
 var URL = require('url');
+var pageChange = require('../common/pageChange');
 
 
 var dataObj = {
@@ -88,7 +89,6 @@ var dealGet = function (req, res) {
 				db.getResultCount(dataObj.articalCount, cb);
 			}
 		}, function (e, result) {
-			console.log(result)
 			var t;
 			for (var i = 0; i < result.artical.length; i++) {
 				var articalTime = result.artical[i].time.toString();
@@ -110,49 +110,7 @@ var dealGet = function (req, res) {
 			//处理分页
 			var count = result.articalCount[0].count;
 
-			function pageChange (count, currentPage, pageSize) {
-				var pageInfo = {};
-				var hasNextPage = false;
-				var hasPreviousPage = false;
-
-				if ((count % pageSize) == 0) {
-					pageInfo.totalPage = count / pageSize;
-				} else {
-					pageInfo.totalPage = Math.ceil(count / pageSize);					
-				}
-
-				if(currentPage >= pageInfo.totalPage) {
-					hasNextPage = false;
-					pageInfo.currentPage = pageInfo.totalPage;
-				} else {
-					hasNextPage = true;
-				}
-
-				if (currentPage <= 1) {
-					hasPreviousPage = false;
-					currentPage = 1;
-				} else {
-					hasPreviousPage = true;
-				}
-
-				pageInfo.nextPage = currentPage + 1;
-
-				if (pageInfo.nextPage >= pageInfo.totalPage) {
-					pageInfo.nextPage = pageInfo.totalPage;
-				}
-
-				pageInfo.previousPage = currentPage - 1;
-
-				if (pageInfo.previousPage <= 1) {
-					pageInfo.previousPage = 1;
-				}
-
-				return pageInfo;
-			}
-				
-			var pageObj= pageChange(count, urlInfo.page, 10);
-
-			console.log(pageObj)
+			var pageObj= pageChange.pageChange(count, urlInfo.page, 10);
 
 			res.render('adminArt', {
 				info: result.artical,

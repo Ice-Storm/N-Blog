@@ -1,3 +1,28 @@
+.content-content {
+	width: 98%;
+	margin-left: 1%;
+	margin-top: 10px;
+	float: left;
+	border: 1px solid #80BDCB;
+	background-color: #BBDDE5;
+	overflow-y: scroll;
+	height: 480px;
+}
+
+.table {
+	width: 100%;
+}
+
+.table tr:hover{
+	background-color: #EBEBED;
+}
+
+.table td{
+	padding-left: 1%;
+	padding-right: 1%;
+	border: 1px solid black
+}
+
 .content-artical {
 	width: 90%;
 	height: 500px;
@@ -59,3 +84,15 @@
 	border: 1px solid gray;
 }
 
+.page-group {
+	margin-top: 20px;
+	margin-bottom: 30px;
+	margin-left: 79%;
+	float: left;
+}
+
+.img-ico {
+	margin-left: 20px;
+	width: 20px;
+	cursor: pointer;
+}

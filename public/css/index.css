@@ -63,7 +63,6 @@
 }
 
 .content-artical-page {
-	width: 44%;
 	background-color: #fff;
 	height:50px;
 	font-size: 20px;
@@ -71,59 +70,27 @@
 	border-radius: 5px;
 	margin-left: 25%;
 	margin-top:50px;
-	border: 1px solid black;
 }
 
-.content-artical-page-previous {
-	width:40%;
+.content-artical-page p{
 	background-color: #fff;
 	height:50px;
 	float: left;
-	border-top-left-radius: 5px;
-	border-bottom-left-radius: 5px;
+	padding-left: 3%;
 }
 
-.content-artical-page :hover {
-	background-color: black;
-	color: #fff;
+.content-artical-page a {
+	text-decoration: none;
 }
 
-.content-artical-page-mid {
-	float: left;
-	width:20%;
-	height: 50px;
-	background-color: #fff;
-}
-
-.content-artical-page-next {
-	width:40%;
-	background-color: #fff;
-	height:50px;
-	float: right;
-	border-top-right-radius: 5px;
-	border-bottom-right-radius: 5px;
-}
-
-.content-artical-page-font-left {
-	margin-top: 10px;
-}
-
-.content-artical-page-font-mid {
-	margin-top: 10px;
-	margin-left: 9px;
-}
-
-
-.content-artical-page-font-right {
-	margin-top: 10px;
-	margin-left: 5px;
+.content-artical-page a:nth-child(odd):hover{
+	color: blue;
 }
 
 .right-bar {
-	
+	width: 30%;
 	background-color: #fff;
 	float: right;
-	margin-right: 1%;
 }
 
 .right-bar-img-border {
@@ -175,7 +142,6 @@
 .right-bar-img-tag-font-title {
 	font-size:20px;
 	margin-top: 15px;
-	margin-left:0px;
 	font-weight: bold;
 }
 
@@ -200,18 +166,12 @@
 	margin-bottom: 16px;
 }
 
-.right-bar-content-util li {
-	width: 30%;
-	float: left;
-}
-
 .right-bar-fun {
 	margin-top: 50px;
-	margin-left: 10%;
 	width: 100%;
 }
 
-.right-bar-content-fun li {
+.right-bar-fun li{
 	float: left;
 	font-size: 15px;
 }

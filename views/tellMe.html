@@ -29,41 +29,29 @@
 
 				<div class = 'division-line'></div>
 
-				<div class = 'content-artical-replay'>
-					<div class = 'content-artical-replay-block'>
-						<div class = 'content-artical-replay-img-all'>
-							<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
-							<p>&nbsp;Reply</p>
-						</div>
-						<div class = 'content-artical-replay-where'></div>
-
-						<div class = 'content-artical-replay-content'>
-							<p class = 'content-artical-replay-content-time'>2013-12-21 12:32</p>
-							<p class = 'content-artical-replay-content-title'>清源</p>
-							<p class = 'content-artical-replay-content-content'>
-								倒萨倒萨
-							</p>
-						</div>
-					</div>
-				</div>
-
+				<% for (var i = 0; i < data.wordsComment.length; i++){ %>
 					<div class = 'content-artical-replay'>
-					<div class = 'content-artical-replay-block'>
-						<div class = 'content-artical-replay-img-all'>
-							<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
-							<p>&nbsp;Reply</p>
-						</div>
-						<div class = 'content-artical-replay-where'></div>
+						<div class = 'content-artical-replay-block'>
+							<div class = 'content-artical-replay-img-all'>
+								<img src = '/uploadImg/1.jpg' class = 'content-artical-replay-img'>
+								<p>&nbsp;Reply</p>
+							</div>
+							<div class = 'content-artical-replay-where'></div>
 
-						<div class = 'content-artical-replay-content'>
-							<p class = 'content-artical-replay-content-time'>2013-12-21 12:32</p>
-							<p class = 'content-artical-replay-content-title'>清源</p>
-							<p class = 'content-artical-replay-content-content'>
-								倒萨倒萨
-							</p>
+							<div class = 'content-artical-replay-content'>
+								<p class = 'content-artical-replay-content-time'>
+									<%= data.wordsComment[i].time %>
+								</p>
+								<p class = 'content-artical-replay-content-title'>
+									<%= data.wordsComment[i].author %>
+								</p>
+								<p class = 'content-artical-replay-content-content'>
+									<%= data.wordsComment[i].content %>
+								</p>
+							</div>
 						</div>
 					</div>
-				</div>
+				<% } %>
 
 				<% include indexComReplay.html %>
 

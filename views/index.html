@@ -44,16 +44,11 @@
 				<% } %>
 
 				<div class = 'content-artical-page'>
-					<div class = 'content-artical-page-previous'>
-						<div class = 'content-artical-page-font-left'><< 上一页</div>
-					</div>
-					<div class = 'content-artical-page-mid'>
-						<div class = 'content-artical-page-font-mid'>1/7</div>
-					</div>
-					<div class = 'content-artical-page-next'>
-						<div class = 'content-artical-page-font-right'>下一页 >></div>
-					</div>
+					<p><a href = '/<%= page.previousPage %>'><< 上一页</a></p>
+					<p><%= page.curPage %>/<%= page.totalPage %></p>
+					<p><a href = '/<%= page.nextPage %>'>下一页 >></a></p>
 				</div>
+
 			</div> 
 		</div>
 
@@ -61,8 +56,6 @@
 
 		<div class = 'right-bar'>
 			
-
-
 			 	<div class = 'right-bar-img'>
 			 		<div class = 'right-bar-img-border'>
 			 			<img src = 'uploadImg/<%= data.config[0].blog_right_img %>' class = 'right-bar-img-size'>
@@ -97,24 +90,9 @@
 						<li> 2015年一月</li>
 					</ul>
 				
-
-				<!-- <div class = 'right-col-content'>
-					<span class = 'right-col-title'>功能</span>
-					<ul class = 'right-col-content-util'>
-						
-						<li>
-							<a href = '<%= data.config[0].blog_address %>'>> 登录</a>
-						</li>
-						
-						<li>
-							<a href = '<%= data.config[0].blog_github %>'>> Github</a>
-						</li>
-						
-					</ul>
-				</div> -->
 					<div class = 'right-bar-fun'>
-						<p class = 'right-bar-content-title'>功能</p>
-						<ul class = 'right-bar-content-fun'>
+						<p class = 'right-bar-title'>功能</p>
+						<ul>
 							<li>
 								<a href = '<%= data.config[0].blog_address %>'>> 登录</a>
 							</li>

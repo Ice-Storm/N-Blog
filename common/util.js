@@ -39,11 +39,6 @@ var urlparse = function (path) {
 				break;
 			} 
 			break;
-		case 'index':
-			results.sort = urlArr[1];
-			results.action = urlArr[2];
-			results.page = url[3];
-			break;
 		default:
 			results.err = '404';
 	}

@@ -1,7 +1,5 @@
 var crypto =  require('crypto');
 
-
-
 var cryptoInfo = function (cryType, outType, info) {
 	var hash = crypto.createHash(cryType);
 

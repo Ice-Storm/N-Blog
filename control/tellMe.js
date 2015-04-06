@@ -65,6 +65,17 @@ var dataObj = {
 		table: 'nblog_words_comment',
 		field: ['author', 'time', 'content'],
 		close: 'true'	
+	},
+
+	insWordsComment: {
+		table: 'nblog_words_comment',
+		/*
+		author
+		content
+		email
+		获取当前 time
+		*/
+		close: 'true'
 	}
 }
 
@@ -114,6 +125,10 @@ var dealGet = function (req, res) {
 			}
 		}
 
+		for (var i = 0; i < result.wordsComment.length; i++) {
+			result.wordsComment[i].time =  util.dateFormat(result.wordsComment[i].time);
+		}
+
 		delete result.recentlyReplayTitle;
 
 		console.log(result)
@@ -121,8 +136,21 @@ var dealGet = function (req, res) {
 			data: result
 		});
 	})
-	
+}
+
+var dealPost = function (req, res) {
+
+	//同一IP提交没加时间限制
+
+	dataObj.insWordsComment.author = req.body.author;
+	dataObj.insWordsComment.content = req.body.content;
+	dataObj.insWordsComment.email = req.body.email;
+	db.insert(dataObj.insWordsComment, function (err) {
+		res.redirect('/tellMe');
+	});
 }
 
 
 module.exports.dealGet= dealGet;
+
+module.exports.dealPost= dealPost;

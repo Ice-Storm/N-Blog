@@ -41,6 +41,8 @@
 						<a href = '/admin/adminIndex/dealRightMenuList/art/1/?delete=true&id=<%= info[i].id %>'>
 							<img src = '/uploadImg/delete.png' class = 'img-ico'>
 						</a>
+
+						
 						<img src = '/uploadImg/editor.png' class = 'img-ico' data-img = 'upload' data-id = '<%= info[i].id %>' data-flag = '<%= info[i].flag %>'>
 					</li>
 					<li><span><%= info[i].author %></span></li>
@@ -132,9 +134,9 @@
 			        });
 
 					})
-				}
 
-				$('.content-content').remove();
+					$('.content-content').remove();
+				}
 
 			});
 	    })

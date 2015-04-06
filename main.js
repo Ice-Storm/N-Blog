@@ -14,7 +14,9 @@ var route = require('./route/routes.js');
 
 var config = require('./config.default.js');
 
-var middlewares = require('./middlewares/auth.js');
+var middlewaresAuth = require('./middlewares/auth.js');
+
+var middlewaresLimit = require('./middlewares/limit.js');
 
 var log4js = require('log4js');
 
@@ -53,7 +55,9 @@ app.use(log4js.connectLogger(logger, {level:log4js.levels.INFO}));*/
 
 // session超时登出
 
- app.use(middlewares.freshSession)
+ app.use(middlewaresAuth.freshSession);
+
+ app.use(middlewaresLimit.limitPost);
  
  app.use(express.static(path.join(__dirname, 'public')));
  

@@ -49,7 +49,9 @@ var config = {
 			user: 'wcwz020140@163.com',
 			pass: 'bai3863114yu'
 		}
-	}
+	},
+
+	postInterval:  15 * 1000
 
 }
 

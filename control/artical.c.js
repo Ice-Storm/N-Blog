@@ -198,7 +198,7 @@ var articalGet = function (req, res) {
 			}
 
 			for (var i = 0; i < result.pubArtical.length; i++) {
-			
+				
 				result.pubArtical[i].time = util.dateFormat(result.pubArtical[i].time);
 
 			}
