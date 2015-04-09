@@ -222,7 +222,6 @@ var del = function (valueCol, cb) {
 
 	pool.getConnection(function (err, conn) {
 		if (err) console.log('mysql connection error');
-		console.log(sql)
 		conn.query(sql, function (err) {
 			if (err) throw err;
 			if (valueCol.close) conn.release();

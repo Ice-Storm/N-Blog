@@ -1,4 +1,4 @@
-var artical = 'create table Nblog_artical (' +
+var artical = 'create table if not exists Nblog_artical (' +
 'id int primary key not null auto_increment,' +
 'title varchar(30) unique not null,' +
 'content text,' +
@@ -10,7 +10,7 @@ var artical = 'create table Nblog_artical (' +
 'flag tinyint not null default 0' +
 ') engine innoDB charset utf8' 
 
-var comment = 'create table Nblog_comment (' +
+var comment = 'create table if not exists Nblog_comment (' +
 'id int primary key not null auto_increment, ' +
 'content varchar(500) not null default "", ' +
 'time timestamp not null default NOW(), ' +
@@ -20,7 +20,7 @@ var comment = 'create table Nblog_comment (' +
 'replay_p int not null default 0' + // 子回复 
 ') engine innoDB charset utf8' 
 
-var admin = 'create table Nblog_admin (' +
+var admin = 'create table if not exists Nblog_admin (' +
 'id int primary key not null auto_increment,' +
 'name char(8) not null unique,' + //昵称
 'user char(15) not null unique default "",' +
@@ -35,19 +35,19 @@ var admin = 'create table Nblog_admin (' +
 'answer_three char(6) not null default""' +
 ') engine innoDB charset utf8' 
 
-var img = 'create table Nblog_img (' +
-'id int primary key not null a uto_increment,' +
+var img = 'create table if not exists Nblog_img (' +
+'id int primary key not null auto_increment,' +
 'img_name char(17) not null default "",' +
 'foreign_p bigint not null default 0' + 
 ') engine innoDB charset utf8'
 
-var tag = 'create table Nblog_tag (' +
+var tag = 'create table if not exists Nblog_tag (' +
 'id int primary key not null auto_increment,' +
-'tag_name char(10) default""' +
+'tag_name char(10) default "",' +
 'foreign_p int not null default 0' + 
 ') engine innoDB charset utf8'
 
-var config = 'create table Nblog_config (' +
+var config = 'create table if not exists Nblog_config (' +
 'id int primary key not null auto_increment,' +
 'blog_name char(10) not null default"",' +
 'blog_sign char(30) not null default"",' +
@@ -62,30 +62,30 @@ var config = 'create table Nblog_config (' +
 'blog_function_p int not null default 0' +	
 ') engine innoDB charset utf8'
 
-var menu = 'create table Nblog_menu (' +
+var menu = 'create table if not exists Nblog_menu (' +
 'id int primary key not null auto_increment,' +
 'menu_name char(10) not null default"",' +
 'foreign_p int not null default 0' + 
 ') engine innoDB charset utf8'
 
-var fun = 'create table Nblog_img (' +
+var fun = 'create table if not exists Nblog_img (' +
 'id int primary key not null auto_increment,' +
 'fun_name char(10) not null default"",' +
 'fun_url varchar(350) not null default"",' +
 'foreign_p tinyint not null default 0' + 
 ') engine innoDB charset utf8'
 
-var rightMenuList = 'create table Nblog_left_menu_list (' +
+var rightMenuList = 'create table if not exists Nblog_left_menu_list (' +
 'id int primary key not null auto_increment,' +
 'list_name char(10) unique not null default""' +
 ') engine innoDB charset utf8'
 
-var words = 'create table Nblog_words (' +
+var words = 'create table if not exists Nblog_words (' +
 'id int primary key not null auto_increment,' +// id = 1 的时候是 whoami 页面
-'content text, ' +                           // id = 2 的时候是 tellMe 页面
+'content text ' +                           // id = 2 的时候是 tellMe 页面
 ') engine innoDB charset utf8'
 
-var wordsComment = 'create table Nblog_words_comment (' +
+var wordsComment = 'create table if not exists Nblog_words_comment (' +
 'id int primary key not null auto_increment,' + 
 'content varchar(500) not null default "", ' +  
 'time timestamp not null default NOW(), ' +
@@ -112,3 +112,5 @@ module.exports.tag = tag;
 module.exports.words = words;
 
 module.exports.wordsComment = wordsComment;
+
+module.exports.comment = comment;

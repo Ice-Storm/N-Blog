@@ -48,7 +48,9 @@ var dealPost = function (req, res, next) {
 				var cryUrl = data[0].user + config.urlsecret;
 				var token = cryptoInfo.cryptoInfo('sha1', 'hex', cryUrl);
 				email.sendResetPassMail(data[0].email, token, data[0].user, data[0].id, 3);
-
+				res.send('邮件已发送');
+			} else {
+				console.log('邮箱都没写，我也是醉了');
 			}
 
 		})

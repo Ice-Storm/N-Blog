@@ -85,8 +85,6 @@ var dealPost = function (req, res) {
 			dataObj.updateObj.blog_artical_img = imgName + '.' + extname;
 		}
 
-		
-
 		async.waterfall([
 			function (cb) {
 				fs.rename(files.imgFile.path, uploadPath + imgName + '.' + extname, cb(err, 1));
@@ -102,7 +100,6 @@ var dealPost = function (req, res) {
 		})
 	})
 }
-
 
 module.exports.dealGet= dealGet;
 

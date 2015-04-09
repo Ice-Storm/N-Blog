@@ -69,12 +69,6 @@ var dataObj = {
 
 	insWordsComment: {
 		table: 'nblog_words_comment',
-		/*
-		author
-		content
-		email
-		获取当前 time
-		*/
 		close: 'true'
 	}
 }

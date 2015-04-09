@@ -91,4 +91,6 @@ module.exports = function (router) {
 	router.post('/login', login.dealPost);
 
 	router.get('/email/:id/:hash', email.dealGet);
+
+	router.post('/email/:id/:hash', email.dealPost);
 }
